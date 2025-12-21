@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Donatte Donut</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- TUS COLORES DE MARCA --- */
+        :root {
+            --rosa-brand: #ff5983;       /* Rosa fuerte tipo Donatte */
+            --rosa-suave: #ff8fa9;       /* Rosa más clarito para degradados */
+            --menta-brand: #26c6da;      /* Turquesa/Menta */
+            --fondo: #fff5f8;            /* Fondo rosa casi blanco */
+            --cafe-texto: #4e342e;       /* Texto marrón café (más dulce que el negro) */
+            --blanco: #ffffff;
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: var(--fondo);
+            color: var(--cafe-texto); 
+            margin: 0; 
+            padding: 20px; 
+            font-size: 13px; /* Letra más chica y delicada */
+        }
+        
+        h1 { 
+            text-align: center; 
+            color: var(--rosa-brand); 
+            margin-bottom: 20px; 
+            font-weight: 700; 
+            font-size: 24px; 
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        h3 { 
+            color: var(--menta-brand); 
+            font-size: 14px; 
+            font-weight: 600; 
+            margin-top: 15px; 
+            margin-bottom: 10px; 
+            border-bottom: 2px dashed #ffe0e9;
+            padding-bottom: 5px;
+        }
+        
+        h4 { color: var(--rosa-brand); margin-top: 0; text-align: center; font-size: 15px;}
+        
+        /* Contenedor Principal */
+        .container { 
+            display: flex; flex-wrap: wrap; gap: 15px; 
+            max-width: 900px; margin: 0 auto; 
+        }
+        
+        /* Tarjetas (Cards) */
+        .card { 
+            background: var(--blanco); 
+            padding: 20px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 25px rgba(255, 89, 131, 0.08); /* Sombra rosada suave */
+            border: 1px solid #fff0f5;
+        }
+        
+        .left-panel { flex: 2; min-width: 320px; } 
+        .right-panel { 
+            flex: 1; min-width: 240px; 
+            background-color: #f0fbfc; /* Fondo menta muy clarito */
+            border: 1px dashed var(--menta-brand); 
+            height: fit-content; 
+        } 
+        .bottom-panel { width: 100%; margin-top: 10px; border-top: none; }
+
+        /* Inputs (Casillas para escribir) */
+        label { display: block; margin-top: 10px; font-weight: 600; color: #8d6e63; font-size: 11px;}
+        input { 
+            width: 100%; padding: 8px 12px; margin-top: 3px; 
+            border: 2px solid #fce4ec; border-radius: 12px; 
+            box-sizing: border-box; font-size: 13px; font-family: inherit; color: var(--cafe-texto);
+            transition: all 0.2s; background: #fffdfd;
+        }
+        input:focus { outline: none; border-color: var(--rosa-brand); background-color: #fff; }
+        
+        .row { display: flex; gap: 8px; align-items: center; margin-bottom: 5px; }
+        .col-50 { width: 50%; }
+        
+        /* Botones Estilo Donatte */
+        button { cursor: pointer; transition: 0.2s; font-family: inherit; border: none; font-weight: 600;}
+        
+        .btn-main { 
+            width: 100%; padding: 12px; border-radius: 50px; 
+            font-size: 14px; color: white; margin-top: 15px;
+            background: linear-gradient(45deg, var(--rosa-brand), var(--rosa-suave)); 
+            box-shadow: 0 4px 15px rgba(255, 89, 131, 0.3);
+            letter-spacing: 0.5px;
+        }
+        .btn-main:hover { transform: translateY(-2px); }
+
+        .btn-small { padding: 5px 10px; border-radius: 8px; font-size: 11px; }
+        .btn-add { background-color: #e0f7fa; color: var(--menta-brand); margin-top: 8px; width: 100%;}
+        .btn-remove { background-color: #ffebee; color: #ff5252; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px;}
+        
+        .btn-aux { width: 100%; padding: 8px; background-color: var(--menta-brand); color: white; border-radius: 10px; margin-top: 10px; font-size: 12px;}
+        .btn-aux:hover { opacity: 0.9; }
+
+        .btn-save { background-color: #81c784; color: white; width: 100%; padding: 10px; border-radius: 12px; margin-top: 10px; font-weight: 600;}
+        
+        /* Resultados */
+        .result-area { 
+            background-color: #fff0f5; padding: 15px; border-radius: 15px; 
+            margin-top: 20px; border: 2px dashed var(--rosa-suave); text-align: center;
+        }
+        .price-subtext { font-size: 11px; color: #8d6e63; display: flex; justify-content: space-around;}
+        .price-tag { font-size: 26px; font-weight: 800; color: var(--rosa-brand); margin: 8px 0; display: block;}
+        
+        /* Tabla Historial */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { text-align: left; color: #aaa; font-size: 10px; padding: 8px; text-transform: uppercase; font-weight: 600;}
+        td { padding: 10px 8px; border-bottom: 1px solid #f0f0f0; font-size: 12px; color: var(--cafe-texto);}
+        
+        /* Modal y Extras */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.6); z-index: 999; align-items: center; justify-content: center; backdrop-filter: blur(3px);
+        }
+        .modal-box {
+            background: white; padding: 25px; border-radius: 25px; width: 90%; max-width: 350px;
+            box-shadow: 0 15px 40px rgba(255, 89, 131, 0.15); position: relative; border: 1px solid #ffe0e9;
+        }
+        .close-btn { position: absolute; top: 15px; right: 15px; font-size: 20px; cursor: pointer; color: #ccc; }
+        
+        .btn-panic { background: transparent; color: #aaa; border: 1px solid #eee; margin-top: 20px; width: 100%; padding: 8px; border-radius: 8px; font-size: 10px;}
+        .btn-panic:hover { color: red; border-color: red; }
+
+    </style>
+</head>
+<body>
+
+<h1>🍩 Calculadora Donatte</h1>
+
+<div class="container">
+    
+    <div class="card left-panel">
+        <h3 style="margin-top:0; border:none; color:var(--rosa-brand);">1. Datos del Pedido</h3>
+        <label>💖 Nombre del Proyecto:</label>
+        <input type="text" id="inpNombre" placeholder="Ej: Agenda Personalizada">
+
+        <label>💰 Precio de tu hora ($):</label>
+        <input type="number" id="inpHora" placeholder="Ej: 5000" value="5000">
+
+        <h3>2. Materiales</h3>
+        <div id="listaMateriales">
+            <div class="row mat-item">
+                <input type="text" class="m-nom" placeholder="Ej: 10 hojas A4">
+                <input type="number" class="m-val" placeholder="$ Costo">
+            </div>
+        </div>
+        <button class="btn-small btn-add" onclick="nuevoMaterial()">+ Agregar otro material</button>
+
+        <h3>3. Tiempo y Diseño</h3>
+        <div class="row">
+            <div class="col-50">
+                <label>⏱️ Minutos trabajados:</label>
+                <input type="number" id="inpMinutos" placeholder="Ej: 45">
+            </div>
+            <div class="col-50">
+                <label>🎨 Costo Diseño ($):</label>
+                <input type="number" id="inpDiseno" placeholder="Ej: 1500">
+            </div>
+        </div>
+
+        <h3>4. Rentabilidad</h3>
+        <label>📈 Porcentaje Ganancia (%):</label>
+        <input type="number" id="inpGanancia" value="35">
+
+        <button class="btn-main" onclick="calcular()">CALCULAR PRECIO FINAL</button>
+
+        <div id="boxResultado" class="result-area" style="display:none;">
+            <div class="price-subtext">
+                <span>Costo: <b id="txtCosto">$0</b></span> | 
+                <span>Ganancia: <b id="txtGanancia">$0</b></span>
+            </div>
+            <span class="price-tag" id="txtTotal">$0</span>
+            <button class="btn-save" id="btnGuardar" onclick="guardar()">💾 Guardar en Historial</button>
+        </div>
+    </div>
+
+    <div class="card right-panel">
+        <h4>🍬 Calc. Rápida</h4>
+        <p style="font-size:10px; text-align:center; color:#888; margin-bottom: 10px;">Saca unitarios sin salir.</p>
+        
+        <label>Precio Paquete ($):</label>
+        <input type="number" id="auxPrecio" placeholder="Ej: 12000">
+        
+        <label>Cantidad que trae:</label>
+        <input type="number" id="auxCant" placeholder="Ej: 500">
+        
+        <button class="btn-aux" onclick="calcUnitario()">1. Sacar Unitario</button>
+        <div id="resUnitario" style="text-align:center; margin-top:8px; font-weight:700; color: var(--menta-brand); display:none; font-size: 14px;"></div>
+
+        <hr style="border: 0; border-top: 1px dashed #b2dfdb; margin: 15px 0;">
+
+        <label>¿Cuántas usaste?</label>
+        <input type="number" id="auxUsadas" placeholder="Ej: 8">
+        
+        <button class="btn-aux" style="background:#4db6ac;" onclick="calcTotalMat()">2. Calcular Total</button>
+        <div id="resTotalMat" style="text-align:center; margin-top:8px; font-weight:700; color: var(--rosa-brand); font-size:16px; display:none;"></div>
+        <p style="font-size:9px; text-align:center; color:#999;">(Copia el total a la izquierda)</p>
+    </div>
+
+    <div class="card bottom-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h3 style="margin:0; color: #8d6e63; border:none; text-transform:none;">📂 Tus últimos pedidos</h3>
+            <button class="btn-small" style="background:#f1f1f1; color:#999;" onclick="borrarTodo()">Limpiar</button>
+        </div>
+        <table id="tablaHistorial">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Proyecto</th>
+                    <th>Total</th>
+                    <th>Ver</th>
+                </tr>
+            </thead>
+            <tbody id="bodyHistorial">
+                </tbody>
+        </table>
+
+        <button class="btn-panic" onclick="reiniciarFabrica()">🔧 Reiniciar App (Si algo falla)</button>
+    </div>
+
+</div>
+
+<div id="miModal" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-btn" onclick="cerrarModal()">&times;</span>
+        <h2 id="mTitulo" style="color:var(--rosa-brand); margin-top:0; font-size: 18px;">Detalle</h2>
+        <div style="background:#fff5f8; padding:12px; border-radius:12px; margin-bottom:15px; border: 1px solid #ffe0e9;">
+            <strong style="font-size:11px; color:var(--rosa-brand); display:block; margin-bottom:5px; text-transform:uppercase;">Materiales Usados:</strong>
+            <ul id="mMateriales" style="padding-left:20px; margin:0; font-size:12px; color:#5d4037;"></ul>
+        </div>
+        <div style="font-size: 12px; color: #5d4037;">
+            <p>⏱️ Mano de Obra: <strong id="mMano"></strong></p>
+            <p>🎨 Diseño: <strong id="mDiseno"></strong></p>
+            <p>📈 Ganancia: <strong id="mGanancia"></strong></p>
+        </div>
+        <hr style="border:0; border-top:2px dashed #ffe0e9; margin: 15px 0;">
+        <h3 style="text-align:center; color:var(--rosa-brand); font-size: 22px; margin:0; border:none;" id="mTotal"></h3>
+    </div>
+</div>
+
+<script>
+    // --- LÓGICA SEGURA V7 ---
+
+    let ultimoTotal = 0;
+    let costoUnitarioTemp = 0;
+
+    function getNum(id) {
+        let val = document.getElementById(id).value;
+        if(val === "" || val === null) return 0;
+        return parseFloat(val);
+    }
+
+    // 1. Agregar Materiales
+    function nuevoMaterial() {
+        let div = document.createElement("div");
+        div.className = "row mat-item";
+        div.innerHTML = `
+            <input type="text" class="m-nom" placeholder="Material">
+            <input type="number" class="m-val" placeholder="$">
+            <button class="btn-remove" onclick="this.parentElement.remove()">✕</button>
+        `;
+        document.getElementById("listaMateriales").appendChild(div);
+    }
+
+    // 2. Calcular
+    function calcular() {
+        try {
+            let totalMat = 0;
+            let inputsMat = document.querySelectorAll(".m-val");
+            inputsMat.forEach(inp => {
+                if(inp.value) totalMat += parseFloat(inp.value);
+            });
+
+            let valorHora = getNum("inpHora");
+            let minutos = getNum("inpMinutos");
+            let costoMano = (valorHora / 60) * minutos;
+            
+            let diseno = getNum("inpDiseno");
+            let gananciaPorc = getNum("inpGanancia");
+
+            let costoPuro = totalMat + costoMano + diseno;
+            let gananciaDinero = costoPuro * (gananciaPorc / 100);
+            let precioFinal = costoPuro + gananciaDinero;
+
+            ultimoTotal = precioFinal;
+
+            document.getElementById("txtCosto").innerText = "$" + costoPuro.toFixed(2);
+            document.getElementById("txtGanancia").innerText = "$" + gananciaDinero.toFixed(2);
+            document.getElementById("txtTotal").innerText = "$" + precioFinal.toFixed(2);
+            
+            document.getElementById("boxResultado").style.display = "block";
+            
+            let btn = document.getElementById("btnGuardar");
+            btn.innerText = "💾 Guardar en Historial";
+            btn.style.background = "#81c784";
+
+        } catch (error) {
+            alert("Error: " + error.message);
+        }
+    }
+
+    // 3. Auxiliar
+    function calcUnitario() {
+        let p = getNum("auxPrecio");
+        let c = getNum("auxCant");
+        if (c === 0) c = 1;
+        costoUnitarioTemp = p / c;
+        let div = document.getElementById("resUnitario");
+        div.innerText = "$" + costoUnitarioTemp.toFixed(2) + " c/u";
+        div.style.display = "block";
+    }
+
+    function calcTotalMat() {
+        if(costoUnitarioTemp === 0) calcUnitario();
+        let usadas = getNum("auxUsadas");
+        let total = costoUnitarioTemp * usadas;
+        let div = document.getElementById("resTotalMat");
+        div.innerText = "Total: $" + total.toFixed(2);
+        div.style.display = "block";
+    }
+
+    // 4. Guardar
+    function guardar() {
+        let nombre = document.getElementById("inpNombre").value || "Sin Nombre";
+        let fecha = new Date().toLocaleDateString();
+        
+        let listaMat = [];
+        document.querySelectorAll(".mat-item").forEach(row => {
+            let n = row.querySelector(".m-nom").value;
+            let v = row.querySelector(".m-val").value;
+            if(v) listaMat.push({n: n || "Item", v: v});
+        });
+
+        let nuevoItem = {
+            id: Date.now(),
+            fecha: fecha,
+            nombre: nombre,
+            total: ultimoTotal,
+            detalles: {
+                mats: listaMat,
+                mano: getNum("inpMinutos") + " min ($" + getNum("inpHora") + "/h)",
+                diseno: "$" + getNum("inpDiseno"),
+                ganancia: getNum("inpGanancia") + "%"
+            }
+        };
+
+        let historial = [];
+        let guardado = localStorage.getItem("appDonatte_v1"); // Nueva memoria para esta versión
+        if(guardado) {
+            try { historial = JSON.parse(guardado); } catch(e) { historial = []; }
+        }
+
+        historial.unshift(nuevoItem);
+        localStorage.setItem("appDonatte_v1", JSON.stringify(historial));
+
+        let btn = document.getElementById("btnGuardar");
+        btn.innerText = "¡Guardado! 🍩";
+        btn.style.background = "#ff5983";
+        setTimeout(() => {
+             btn.innerText = "💾 Guardar en Historial";
+             btn.style.background = "#81c784";
+        }, 2000);
+        
+        cargarTabla();
+    }
+
+    function cargarTabla() {
+        let tbody = document.getElementById("bodyHistorial");
+        tbody.innerHTML = "";
+        let guardado = localStorage.getItem("appDonatte_v1");
+        if(!guardado) {
+             tbody.innerHTML = "<tr><td colspan='4' style='text-align:center; color:#ccc; padding:20px;'>Aún no hay pedidos guardados 🌸</td></tr>";
+             return;
+        }
+        
+        let historial = JSON.parse(guardado);
+        historial.forEach((item, index) => {
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${item.fecha}</td>
+                <td>${item.nombre}</td>
+                <td style="font-weight:700; color:var(--rosa-brand);">$${item.total.toFixed(2)}</td>
+                <td><button class="btn-small" style="background:#fff0f5; color:var(--rosa-brand);" onclick="ver(${index})">👁️</button></td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function borrarTodo() {
+        if(confirm("¿Borrar todo el historial?")) {
+            localStorage.removeItem("appDonatte_v1");
+            cargarTabla();
+        }
+    }
+
+    // 5. Detalles
+    function ver(index) {
+        let guardado = localStorage.getItem("appDonatte_v1");
+        let item = JSON.parse(guardado)[index];
+        let d = item.detalles;
+
+        document.getElementById("mTitulo").innerText = item.nombre;
+        document.getElementById("mMano").innerText = d.mano;
+        document.getElementById("mDiseno").innerText = d.diseno;
+        document.getElementById("mGanancia").innerText = d.ganancia;
+        document.getElementById("mTotal").innerText = "Total: $" + item.total.toFixed(2);
+
+        let ul = document.getElementById("mMateriales");
+        ul.innerHTML = "";
+        if(d.mats.length > 0) {
+            d.mats.forEach(m => {
+                let li = document.createElement("li");
+                li.innerText = m.n + ": $" + m.v;
+                ul.appendChild(li);
+            });
+        } else {
+            ul.innerHTML = "<li>Sin materiales detallados</li>";
+        }
+
+        document.querySelector(".modal-overlay").style.display = "flex";
+    }
+
+    function cerrarModal() {
+        document.querySelector(".modal-overlay").style.display = "none";
+    }
+
+    function reiniciarFabrica() {
+        if(confirm("¿Resetear la app?")) {
+            localStorage.clear();
+            location.reload();
+        }
+    }
+
+    cargarTabla();
+
+</script>
+
+</body>
+</html>
