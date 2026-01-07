@@ -2,425 +2,1601 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NPM379XLP7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-NPM379XLP7');
-</script>
-    <title>Calculadora Donatte Detalle</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calculadora Donatte v77 (Stock)</title>
+    
+    <meta name="theme-color" content="#ff5983">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/doodle/96/000000/doughnut.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
     <style>
-        /* --- ESTILOS DE MARCA DONATTE --- */
+        /* --- ESTILOS --- */
         :root {
-            --rosa-brand: #ff5983;
-            --rosa-claro: #ffebee;
-            --menta-brand: #26c6da;
-            --verde-venta: #2e7d32; /* Verde elegante para la venta */
-            --rojo-costo: #880e4f;  /* Color vino para Costo Total */
-            --fondo: #fff5f8;
-            --cafe-texto: #4e342e;
-            --blanco: #ffffff;
+            --rosa-brand: #ff5983; --rosa-claro: #ffebee; --menta-brand: #26c6da;
+            --verde-venta: #2e7d32; --rojo-borrar: #e53935; --violeta-btn: #ab47bc;
+            --fondo: #fff5f8; --cafe-texto: #4e342e; --blanco: #ffffff;
+            --p-amarillo: #fff9c4; --p-lila: #e1bee7; --p-aqua: #b2ebf2; --p-rosa: #f8bbd0;
         }
 
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background-color: var(--fondo);
-            color: var(--cafe-texto); 
-            margin: 0; padding: 20px; 
-            font-size: 13px;
-        }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--fondo); color: var(--cafe-texto); margin: 0; padding: 20px; font-size: 14px; -webkit-tap-highlight-color: transparent; }
         
-        h1 { text-align: center; color: var(--rosa-brand); margin-bottom: 20px; font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;}
-        h3 { color: var(--menta-brand); font-size: 14px; font-weight: 600; margin-top: 15px; margin-bottom: 10px; border-bottom: 2px dashed #ffe0e9; padding-bottom: 5px;}
-        h4 { color: var(--rosa-brand); margin-top: 0; text-align: center; font-size: 15px;}
-        
-        .container { display: flex; flex-wrap: wrap; gap: 15px; max-width: 900px; margin: 0 auto; }
-        
-        .card { 
-            background: var(--blanco); padding: 20px; border-radius: 20px; 
-            box-shadow: 0 10px 25px rgba(255, 89, 131, 0.08); border: 1px solid #fff0f5;
-        }
-        
-        .left-panel { flex: 2; min-width: 320px; } 
-        .right-panel { flex: 1; min-width: 240px; background-color: #f0fbfc; border: 1px dashed var(--menta-brand); height: fit-content; } 
-        .bottom-panel { width: 100%; margin-top: 10px; }
+        /* HEADER */
+        .header-top { display: flex; justify-content: center; align-items: center; margin-bottom: 25px; padding: 0 5px; position: relative; min-height: 50px; }
+        .title-container { display: flex; align-items: center; justify-content: center; }
+        h1 { text-align: center; color: var(--rosa-brand); margin: 0; font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; }
+        .logo-img-header { max-height: 60px; width: auto; object-fit: contain; margin-right: 10px; }
+        .header-btns { display: flex; gap: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .btn-circle { background: #fff; border: 2px solid #eee; border-radius: 50%; width: 38px; height: 38px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; color: #888; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.2s;}
+        .btn-circle:active { transform: scale(0.95); }
 
-        label { display: block; margin-top: 10px; font-weight: 600; color: #8d6e63; font-size: 11px;}
-        input { 
-            width: 100%; padding: 8px 12px; margin-top: 3px; border: 2px solid #fce4ec; 
-            border-radius: 12px; box-sizing: border-box; font-size: 13px; font-family: inherit; color: var(--cafe-texto);
-            transition: all 0.2s; background: #fffdfd;
-        }
-        input:focus { outline: none; border-color: var(--rosa-brand); background-color: #fff; }
+        h3 { color: var(--menta-brand); font-size: 16px; font-weight: 600; margin-top: 15px; margin-bottom: 10px; border-bottom: 2px dashed #ffe0e9; padding-bottom: 5px;}
+        h4 { color: var(--rosa-brand); margin-top: 0; margin-bottom: 15px; font-size: 16px; font-weight: 700;}
+
+        /* LAYOUT */
+        .container { display: flex; flex-wrap: wrap; gap: 25px; max-width: 1100px; margin: 0 auto; justify-content: center; align-items: flex-start; }
+        .left-panel { flex: 1; min-width: 340px; }
+        .right-panel { flex: 1; min-width: 340px; }
+        .bottom-panel { width: 100%; max-width: 1100px; margin: 25px auto 0; padding-bottom: 50px; }
+
+        .card { background: var(--blanco); padding: 25px; border-radius: 25px; box-shadow: 0 10px 30px rgba(255, 89, 131, 0.1); border: 1px solid #fff0f5; }
+        .tool-section { background: #fff; padding: 20px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #fce4ec; margin-bottom: 25px; }
+
+        label { display: block; margin-top: 12px; font-weight: 600; color: #8d6e63; font-size: 12px; margin-bottom: 5px;}
         
-        .row { display: flex; gap: 8px; align-items: center; margin-bottom: 5px; }
+        input, select, textarea { 
+            width: 100%; padding: 12px; border: 2px solid #fce4ec; 
+            border-radius: 12px; box-sizing: border-box; font-size: 16px;
+            font-family: inherit; color: var(--cafe-texto); background: #fffdfd; height: 50px;
+        }
+        textarea { height: 80px; resize: none; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--rosa-brand); background-color: #fff; }
+        
+        .row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+        .row input, .row select { height: 45px; margin-top: 0; }
         .col-50 { width: 50%; }
-        
+
         button { cursor: pointer; transition: 0.2s; font-family: inherit; border: none; font-weight: 600;}
+        .btn-main { width: 100%; padding: 15px; border-radius: 50px; font-size: 16px; color: white; margin-top: 20px; background: linear-gradient(45deg, var(--rosa-brand), #ff8fa9); box-shadow: 0 5px 15px rgba(255, 89, 131, 0.4); }
+        .btn-main:active { transform: scale(0.98); }
         
-        .btn-main { 
-            width: 100%; padding: 12px; border-radius: 50px; font-size: 14px; color: white; margin-top: 15px;
-            background: linear-gradient(45deg, var(--rosa-brand), #ff8fa9); 
-            box-shadow: 0 4px 15px rgba(255, 89, 131, 0.3);
-        }
-        .btn-main:hover { transform: translateY(-2px); }
+        .btn-small { padding: 0 15px; border-radius: 10px; font-size: 14px; }
+        .btn-add { background-color: #e0f7fa; color: var(--menta-brand); flex: 1; height: 45px;}
+        .btn-new-mat { background-color: var(--p-lila); color: #7b1fa2; width: auto; padding: 0 20px; font-size: 20px; height: 45px;}
+        .btn-trash { background-color: #ffebee; color: var(--rojo-borrar); border-radius: 10px; padding: 0 15px; height: 45px; font-size: 18px;}
+        .btn-edit { background-color: #e3f2fd; color: #1976d2; border-radius: 10px; padding: 0 15px; height: 45px; font-size: 18px; margin-right: 5px;}
+        .btn-remove { background-color: #ffebee; color: var(--rojo-borrar); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;}
+        .btn-product { background-color: #ffcc80; color: #e65100; font-weight: 600; }
+        .btn-catalog { background-color: #29b6f6; color: white; font-weight: 600; width: 100%; padding: 10px; margin-bottom:10px; border-radius:10px; }
+        .btn-save-mini { background-color: #e1bee7; color: #7b1fa2; width: 50px; height: 45px; border-radius: 10px; font-size: 20px; display: flex; align-items: center; justify-content: center; }
+        .btn-stock { background-color: #ffcc80; color: #e65100; height: 45px; padding: 0 15px; border-radius: 10px; font-size: 20px; display: flex; align-items: center; justify-content: center; margin-right: 5px;}
 
-        .btn-small { padding: 5px 10px; border-radius: 8px; font-size: 11px; }
-        .btn-add { background-color: #e0f7fa; color: var(--menta-brand); margin-top: 8px; width: 100%;}
-        .btn-remove { background-color: #ffebee; color: #ff5252; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;}
+        .btn-purple { background-color: var(--violeta-btn); color: white; width: 100%; padding: 12px; border-radius: 12px; margin-top: 15px; font-size: 14px;}
+        .btn-aux { width: 100%; padding: 12px; background-color: var(--menta-brand); color: white; border-radius: 12px; margin-top: 15px; font-size: 13px;}
+        .btn-pink { background-color: var(--rosa-brand); color: white; width: 100%; padding: 12px; border-radius: 12px; margin-top: 10px; font-size: 13px;}
+        .btn-blue { background-color: #42a5f5; color: white; width: 100%; padding: 12px; border-radius: 12px; margin-top: 10px; font-size: 13px;}
         
-        .btn-aux { width: 100%; padding: 8px; background-color: var(--menta-brand); color: white; border-radius: 10px; margin-top: 10px; font-size: 12px;}
+        .btn-insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; border: none; }
         
-        .btn-save { background-color: #81c784; color: white; width: 48%; padding: 10px; border-radius: 12px; font-weight: 600;}
-        .btn-download { background-color: #ba68c8; color: white; width: 48%; padding: 10px; border-radius: 12px; font-weight: 600;}
-        .action-row { display: flex; justify-content: space-between; margin-top: 15px; }
+        .action-row { display: flex; justify-content: space-between; gap: 5px; margin-top: 25px; flex-wrap: wrap;}
+        .btn-final { padding: 10px; border-radius: 12px; font-weight: 600; font-size: 11px; display: flex; align-items: center; justify-content: center; gap: 3px; color: var(--cafe-texto); box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex: 1; min-width: 70px; }
+        .btn-whatsapp { background-color: #dcf8c6; color: #2e7d32; border: 1px solid #c8e6c9;}
+        .btn-save { background-color: var(--p-aqua); }
+        .btn-client { background-color: var(--p-lila); }
+        .btn-internal { background-color: var(--p-rosa); }
 
-        /* --- NUEVO ESTILO DEL RESULTADO (Tipo Lista) --- */
-        .result-area { 
-            background-color: #f3e5f5; /* Un lila muy suave o usar var(--rosa-claro) */
-            background-color: var(--rosa-claro);
-            padding: 20px; 
-            border-radius: 15px; 
-            margin-top: 20px; 
-            border: 1px solid #ffcdd2; 
-        }
+        #listaMaterialesVisual, #listaKitVisual { margin-top: 15px; background: #fafafa; border-radius: 12px; padding: 15px; border: 1px dashed #e0e0e0; }
+        .mat-agregado-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed #eee; font-size: 13px; }
+        .mat-agregado-row:last-child { border-bottom: none; }
 
-        .res-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
-            font-size: 13px;
-            color: var(--cafe-texto);
-        }
-        
-        .res-bold { font-weight: 600; }
-        
-        .res-costo-total {
-            color: var(--rojo-costo);
-            font-weight: 700;
-            margin-top: 5px;
-        }
+        .result-area { background-color: var(--rosa-claro); padding: 25px; border-radius: 20px; margin-top: 30px; border: 2px solid #ffcdd2; }
+        .res-row { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px; color: var(--cafe-texto); }
+        .res-divider { height: 1px; border-top: 2px dashed #ccc; margin: 15px 0; opacity: 0.5; }
+        .res-final { text-align: center; font-size: 28px; font-weight: 800; color: var(--verde-venta); display: flex; align-items: center; justify-content: center; gap: 5px; flex-direction: column; margin-top: 10px;}
+        .res-list-container { background: rgba(255,255,255,0.6); padding: 10px; border-radius: 10px; margin-bottom: 15px; border: 1px dashed var(--rosa-brand); }
+        .mini-form { background: #f9f9f9; padding: 15px; border-radius: 15px; margin-top: 10px; border: 1px solid #ddd; display: none; }
 
-        .res-divider {
-            height: 1px;
-            border-top: 1px dashed #999;
-            margin: 12px 0;
-            opacity: 0.5;
-        }
-
-        .res-final {
-            text-align: center;
-            font-size: 22px; /* Tamaño controlado, no gigante */
-            font-weight: 700;
-            color: var(--verde-venta);
-        }
-        
-        /* Tabla Historial */
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th { text-align: left; color: #aaa; font-size: 10px; padding: 8px; font-weight: 600;}
-        td { padding: 10px 8px; border-bottom: 1px solid #f0f0f0; font-size: 12px; color: var(--cafe-texto);}
-        
-        /* Ticket Oculto */
-        #ticketArea {
-            position: absolute; left: -9999px; top: 0; 
-            width: 400px; background: white; padding: 30px;
-            border-top: 15px solid var(--rosa-brand);
-            font-family: 'Poppins', sans-serif; color: var(--cafe-texto); box-sizing: border-box;
-        }
+        th { text-align: left; color: #aaa; font-size: 11px; padding: 10px; font-weight: 600;}
+        td { padding: 15px 10px; border-bottom: 1px solid #f0f0f0; font-size: 13px; color: var(--cafe-texto);}
+        .hist-actions { display: flex; gap: 5px; justify-content: center; flex-wrap: wrap;}
+        .row-sold { background-color: #e8f5e9; } 
+        .status-badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: bold; text-transform: uppercase;}
+        .status-pending { background: #fff3e0; color: #ef6c00; }
+        .status-sold { background: #c8e6c9; color: #2e7d32; }
+        .status-info { background: #eeeeee; color: #757575; }
 
+        /* MODALES */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 999; align-items: center; justify-content: center; backdrop-filter: blur(2px); }
+        .modal-box { background: white; padding: 30px; border-radius: 25px; width: 90%; max-width: 500px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 2px solid #ffe0e9; position: relative; max-height: 80vh; overflow-y: auto;}
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #ccc; }
+
+        /* STOCK MODAL */
+        .stock-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .stock-name { font-weight: 600; flex: 2; }
+        .stock-input { width: 80px !important; height: 35px !important; text-align: center; margin: 0 10px; padding: 5px !important;}
+        .stock-update-btn { background: var(--menta-brand); color: white; border-radius: 5px; padding: 5px 10px; font-size: 12px; }
+
+        /* DASHBOARD STATS */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        .stat-card { background: #f9f9f9; padding: 15px; border-radius: 15px; text-align: center; border: 1px solid #eee; }
+        .stat-val { font-size: 20px; font-weight: 800; color: var(--rosa-brand); display: block; margin-top: 5px; }
+        .stat-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* CATALOGO STYLES */
+        .cat-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #eee; }
+        .cat-info { flex: 1; }
+        .cat-name { font-weight: 700; color: #333; font-size: 14px; }
+        .cat-meta { font-size: 11px; color: #888; }
+        .cat-detail { font-size: 11px; color: #7b1fa2; font-style: italic; margin-top: 2px; }
+        .cat-profit { color: var(--verde-venta); font-size: 11px; font-weight: 600; }
+        .search-box { width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 10px; border: 2px solid #eee; background: #fdfdfd; font-size: 14px; }
+
+        .promo-tags { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+        .tag-btn { background: #fff; border: 2px solid var(--p-lila); color: #8e24aa; padding: 8px 12px; border-radius: 20px; font-size: 11px; cursor: pointer; font-weight: 600; flex: 1; text-align: center; transition: 0.2s;}
+        .tag-btn:hover { background: var(--p-lila); }
+        .combo-instr { font-size: 12px; color: #777; margin-bottom: 15px; background: #f3f3f3; padding: 10px; border-radius: 10px; border-left: 4px solid var(--violeta-btn); }
+
+        #previewContainer { margin-top: 25px; border: 2px dashed var(--violeta-btn); padding: 15px; border-radius: 20px; background: #f3e5f5; display: none; text-align: center; }
+
+        /* TICKETS & FLYER */
+        .ticket-base { position: absolute; left: -9999px; top: 0; width: 450px; box-sizing: border-box; font-family: 'Poppins', sans-serif; color: var(--cafe-texto); }
+        
+        /* TICKET CLIENTE */
+        #ticketCliente { padding: 40px; background: #fff; border-top: 15px solid var(--rosa-brand); text-align: center; }
+        .tc-logo { font-size: 28px; font-weight: 800; color: var(--rosa-brand); text-transform: uppercase; margin-top: 10px; letter-spacing: 2px; line-height: 1;}
+        .tc-logo-img { max-width: 150px; max-height: 80px; object-fit: contain; display:block; margin: 0 auto; }
+        
+        .tc-box { border: 3px dashed var(--rosa-claro); padding: 30px; border-radius: 20px; margin: 30px 0; }
+        .tc-prod { font-size: 24px; font-weight: 700; color: #333; margin-bottom: 5px; text-transform: uppercase;}
+        .tc-price { font-size: 55px; font-weight: 900; color: var(--verde-venta); margin: 10px 0; line-height: 1;}
+        .tc-footer { font-size: 12px; color: #888; border-top: 1px solid #eee; padding-top: 20px; line-height: 1.5; }
+        #ticketInterno { padding: 30px; background: #fff; border: 2px dashed #ccc; }
+
+        #flyerPastel { width: 260px; margin: 0 auto; background: linear-gradient(to bottom, var(--p-amarillo) 0%, var(--p-amarillo) 25%, var(--p-lila) 25%, var(--p-lila) 50%, var(--p-aqua) 50%, var(--p-aqua) 75%, var(--p-rosa) 75%, var(--p-rosa) 100%); padding: 15px; text-align: center; border-radius: 0; box-sizing: border-box; position: relative; background-size: cover; background-position: center; }
+        .fondo-rayas { background: linear-gradient(to bottom, var(--p-amarillo) 0%, var(--p-amarillo) 25%, var(--p-lila) 25%, var(--p-lila) 50%, var(--p-aqua) 50%, var(--p-aqua) 75%, var(--p-rosa) 75%, var(--p-rosa) 100%) !important; }
+        .fondo-rosa { background: linear-gradient(135deg, #fff0f5 0%, #f8bbd0 100%) !important; }
+        .fondo-lila { background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%) !important; }
+        .fondo-menta { background: linear-gradient(135deg, #e0f2f1 0%, #b2ebf2 100%) !important; }
+        .fondo-cielo { background: linear-gradient(180deg, #e3f2fd 0%, #bbdefb 100%) !important; }
+        .fondo-atardecer { background: linear-gradient(135deg, #ffe0b2 0%, #ffccbc 100%) !important; }
+        .fondo-galaxia { background: linear-gradient(135deg, #f8bbd0 0%, #ba68c8 100%) !important; }
+
+        .fly-card { background: rgba(255,255,255,0.95); padding: 15px; border-radius: 15px; box-shadow: 0 5px 10px rgba(0,0,0,0.05); width: 100%; box-sizing: border-box; border: 3px dashed white; text-align: center; } 
+        /* TITULO FLYER CENTRADO */
+        .fly-title { font-size: 28px; font-weight: 900; color: var(--rosa-brand); text-transform: uppercase; margin: 0 auto; line-height: 1; text-shadow: 1px 1px 0px rgba(255,255,255,0.8); margin-bottom: 5px; width: 100%; text-align: center; display: block;}
+        .fly-subtitle { font-size: 10px; letter-spacing: 2px; color: #888; margin-bottom: 15px; text-transform: uppercase; }
+        .fly-list { list-style: none; padding: 0; margin: 0; text-align: left; border-top: 2px dotted #eee; border-bottom: 2px dotted #eee; padding: 10px 0; margin-bottom: 10px; }
+        .fly-item { font-size: 13px; color: #555; margin-bottom: 4px; font-weight: 600; display: flex; justify-content: space-between; }
+        .fly-total-label { font-size: 10px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; display: block;}
+        .fly-total { font-size: 40px; font-weight: 900; color: var(--menta-brand); text-shadow: 2px 2px 0px #e0f2f1; display: block; line-height: 1; margin-bottom: 8px; }
+        .fly-footer { margin-top: 15px; font-size: 10px; background: #fff; padding: 8px 12px; border-radius: 8px; display: block; width: fit-content; margin-left: auto; margin-right: auto; font-weight: 700; text-transform: uppercase; color: #999 !important; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+        #resA4Box { font-size: 24px; font-weight: 800; color: var(--rosa-brand); margin-top: 15px; text-align: center; border: 2px dashed #ffcc80; padding: 15px; border-radius: 15px; background: #fff8e1; }
+
+        .file-upload-wrapper { position: relative; overflow: hidden; display: inline-block; width: 100%; margin-top:5px; }
+        .btn-upload { border: 2px dashed #ccc; background: #fafafa; color: #777; width: 100%; padding: 8px; border-radius: 10px; font-size: 12px; cursor: pointer; text-align: center;}
+        .btn-upload:hover { border-color: var(--violeta-btn); color: var(--violeta-btn); }
+        .file-upload-wrapper input[type=file] { position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer;}
+        
+        .section-header { color: #555; font-weight: 700; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { flex-direction: column; }
+            .left-panel, .right-panel, .bottom-panel { width: 100%; min-width: 0; }
+            .action-row { gap: 5px; }
+            .btn-final { min-width: 80px; font-size: 11px; padding: 10px; }
+        }
     </style>
 </head>
-<body>
+<body onload="iniciarApp()">
 
-<h1>🍩 Calculadora Donatte</h1>
+<div class="header-top">
+    <div class="title-container" id="titleContainer">
+        <h1 id="appTitleText">🍩 Calculadora Donatte</h1>
+    </div>
+    <div class="header-btns">
+        <button class="btn-circle" onclick="mostrarInstrucciones()" title="Instalar App">📲</button>
+        <button class="btn-circle" onclick="abrirStats()" title="Estadísticas">📊</button>
+        <button class="btn-circle" onclick="abrirConfig()" title="Configuración">⚙️</button>
+    </div>
+</div>
 
 <div class="container">
     
     <div class="card left-panel">
-        <h3 style="margin-top:0; border:none; color:var(--rosa-brand);">1. Datos del Pedido</h3>
-        <label>💖 Nombre del Proyecto:</label>
-        <input type="text" id="inpNombre" placeholder="Ej: Agenda Personalizada">
+        <h3 style="margin-top:0; border:none; color:var(--rosa-brand);">1. Proyecto / Producto</h3>
+        <label>💖 Nombre (lo que verá el cliente):</label>
+        <input type="text" id="inpNombre" placeholder="Ej: Kit Cumpleaños Plim Plim">
 
         <label>💰 Precio de tu hora ($):</label>
-        <input type="number" id="inpHora" placeholder="Ej: 5000" value="5000">
+        <input type="number" id="inpHora" placeholder="5000">
 
         <h3>2. Materiales</h3>
-        <div id="listaMateriales">
-            <div class="row mat-item">
-                <input type="text" class="m-nom" placeholder="Ej: 10 hojas A4">
-                <input type="number" class="m-val" placeholder="$ Costo">
+        <label style="color:#26c6da;">2.1 Insumos (Papel, Tinta...)</label>
+        <div class="row">
+            <select id="selectMateriales" onchange="prepararMaterial()">
+                <option value="">Selecciona insumo...</option>
+            </select>
+            <button class="btn-stock" onclick="abrirModalStock()" title="Ver Stock">📦</button>
+            <button class="btn-trash" onclick="borrarMaterialDb()">🗑️</button>
+            <button class="btn-small btn-new-mat" onclick="toggleNuevoMat()">+</button>
+        </div>
+
+        <div id="formNuevoMat" class="mini-form">
+            <strong style="color:var(--menta-brand)">Nuevo Insumo:</strong>
+            <div class="row">
+                <input type="text" id="newMatNombre" placeholder="Nombre (Ej: Vinilo)" style="flex:2;">
+                <input type="number" id="newMatPrecio" placeholder="$" style="flex:1;">
+            </div>
+            <label style="margin-top:5px;">Stock Inicial:</label>
+            <input type="number" id="newMatStock" placeholder="Cant. disponible (Ej: 100)" value="0">
+            <button class="btn-small btn-add" style="margin-top:10px;" onclick="guardarMaterialEnDb()">💾 Guardar</button>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <input type="number" id="matCant" placeholder="Cant." style="flex:1;" value="1">
+            <input type="number" id="matCostoActual" placeholder="Costo Unit." style="flex:2;">
+            <button class="btn-small btn-add" onclick="agregarMaterialAlPresupuesto()">⬇️ Agregar</button>
+        </div>
+
+        <div style="border-top:1px dashed #ccc; margin-top:15px; padding-top:10px;">
+            <label style="color:#e65100;">2.2 Mis Productos (Ya calculados)</label>
+            
+            <button class="btn-catalog" onclick="abrirCatalogo()">📖 Ver Catálogo Completo</button>
+
+            <div class="row">
+                <select id="selectProductosGuardados">
+                    <option value="">Selecciona guardado...</option>
+                </select>
+            </div>
+            
+            <label style="color:#888; font-size:11px; margin-top:5px;">O agrega uno manual:</label>
+            <div class="row">
+                <input type="text" id="prodManualNombre" placeholder="Nombre" style="flex:2;">
+                <input type="number" id="prodManualPrecio" placeholder="$" style="flex:1;">
+            </div>
+            <div class="row">
+                 <input type="text" id="prodManualDetalle" placeholder="Detalles (Opcional)" style="flex:3;">
+                 <button class="btn-save-mini" onclick="guardarProductoManualDb()" title="Guardar para usar en Kits">💾</button>
+            </div>
+            
+            <div class="row">
+                <input type="number" id="prodCant" placeholder="Cant." style="width:70px;" value="1">
+                <button class="btn-small btn-product" style="flex:1; height:45px;" onclick="agregarProductoAlPresupuesto()">📦 Agregar al Presupuesto</button>
             </div>
         </div>
-        <button class="btn-small btn-add" onclick="nuevoMaterial()">+ Agregar otro material</button>
 
-        <h3>3. Tiempo y Diseño</h3>
+        <div id="listaMaterialesVisual">
+            <div style="text-align:center; color:#ccc; font-style:italic; font-size:12px;">Lista vacía</div>
+        </div>
+
+        <h3>3. Desgaste y Equipos</h3>
         <div class="row">
             <div class="col-50">
-                <label>⏱️ Minutos trabajados:</label>
-                <input type="number" id="inpMinutos" placeholder="Ej: 45">
+                <label>Costo x Hoja ($):</label>
+                <input type="number" id="inpDesgasteCosto" placeholder="500">
             </div>
             <div class="col-50">
-                <label>🎨 Costo Diseño ($):</label>
-                <input type="number" id="inpDiseno" placeholder="Ej: 1500">
+                <label>Cant. Hojas:</label>
+                <input type="number" id="inpDesgasteCant" placeholder="10">
             </div>
         </div>
 
-        <h3>4. Rentabilidad</h3>
+        <h3>4. Tiempo y Diseño</h3>
+        <div class="row">
+            <div class="col-50">
+                <label>⏱️ Minutos:</label>
+                <input type="number" id="inpMinutos" placeholder="30">
+            </div>
+            <div class="col-50">
+                <label>🎨 Diseño ($):</label>
+                <input type="number" id="inpDiseno" placeholder="1500">
+            </div>
+        </div>
+
+        <h3>5. Rentabilidad</h3>
         <label>📈 Porcentaje Ganancia (%):</label>
         <input type="number" id="inpGanancia" value="35">
 
         <button class="btn-main" onclick="calcular()">CALCULAR PRECIO FINAL</button>
 
         <div id="boxResultado" class="result-area" style="display:none;">
+            <strong style="font-size:11px; color:var(--rosa-brand); display:block; margin-bottom:5px;">Detalle Interno:</strong>
+            <div id="resListaMateriales" class="res-list-container"></div>
+
+            <div class="res-row"><span>Desgaste:</span> <span id="txtDesgaste">$0</span></div>
+            <div class="res-row"><span>Mano de Obra:</span> <span id="txtMano">$0</span></div>
+            <div class="res-row"><span>Diseño:</span> <span id="txtDiseno">$0</span></div>
             
-            <div class="res-row">
-                <span>Materiales:</span>
-                <span id="txtMat">$0.00</span>
-            </div>
-            <div class="res-row">
-                <span>Mano de Obra:</span>
-                <span id="txtMano">$0.00</span>
-            </div>
-            <div class="res-row">
-                <span>Diseño:</span>
-                <span id="txtDiseno">$0.00</span>
-            </div>
-            
-            <div class="res-row res-costo-total">
-                <span>COSTO TOTAL:</span>
-                <span id="txtCosto">$0.00</span>
-            </div>
-            
-            <div class="res-row">
-                <span>Ganancia:</span>
-                <span id="txtGanancia">$0.00</span>
-            </div>
+            <div class="res-divider"></div>
+            <div class="res-row" style="font-weight:700;"><span>Costo Total:</span> <span id="txtCosto">$0</span></div>
+            <div class="res-row" style="color:var(--verde-venta);"><span>Tu Ganancia:</span> <span id="txtGanancia">$0</span></div>
 
             <div class="res-divider"></div>
 
             <div class="res-final">
-                VENTA: <span id="txtTotal">$0.00</span>
+                <span style="font-size:14px; color:#555; font-weight:600;">PRECIO DE VENTA:</span> 
+                <span id="txtTotal" style="font-size:35px;">$0</span>
             </div>
             
+            <button class="btn-small btn-product" style="width:100%; margin-top:10px; margin-bottom:15px;" onclick="guardarComoProducto()">📦 Guardar Todo como Producto Nuevo</button>
+
             <div class="action-row">
-                <button class="btn-save" id="btnGuardar" onclick="guardar()">💾 Guardar</button>
-                <button class="btn-download" onclick="descargarImagen()">📸 Descargar</button>
+                <button class="btn-final btn-whatsapp" onclick="copiarWhatsapp()">📱 WhatsApp</button>
+                <button class="btn-final btn-insta" onclick="mostrarModalInstagram('presupuesto')">📸 Instagram</button>
+                <button class="btn-final btn-save" onclick="guardarHistorial()">💾 Guardar</button>
+                <button class="btn-final btn-client" onclick="descargarCliente()">📄 Cliente</button>
+                <button class="btn-final btn-internal" onclick="descargarInterno()">📋 Para Mí</button>
             </div>
         </div>
     </div>
 
-    <div class="card right-panel">
-        <h4>🍬 Calc. Rápida</h4>
-        <p style="font-size:10px; text-align:center; color:#888;">Unitarios sin salir.</p>
-        <label>Precio Paquete ($):</label>
-        <input type="number" id="auxPrecio" placeholder="Ej: 12000">
-        <label>Cantidad que trae:</label>
-        <input type="number" id="auxCant" placeholder="Ej: 500">
-        <button class="btn-aux" onclick="calcUnitario()">1. Sacar Unitario</button>
-        <div id="resUnitario" style="text-align:center; margin-top:8px; font-weight:700; color: var(--menta-brand); display:none; font-size: 14px;"></div>
-        <hr style="border: 0; border-top: 1px dashed #b2dfdb; margin: 15px 0;">
-        <label>¿Cuántas usaste?</label>
-        <input type="number" id="auxUsadas" placeholder="Ej: 8">
-        <button class="btn-aux" style="background:#4db6ac;" onclick="calcTotalMat()">2. Calcular Total</button>
-        <div id="resTotalMat" style="text-align:center; margin-top:8px; font-weight:700; color: var(--rosa-brand); font-size:16px; display:none;"></div>
-    </div>
-
-    <div class="card bottom-panel">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="margin:0; color: #8d6e63; border:none;">📂 Historial</h3>
-            <button class="btn-small" style="background:#f1f1f1; color:#999;" onclick="borrarTodo()">Limpiar</button>
+    <div class="right-panel">
+        
+        <div class="tool-section">
+            <h4 style="color:#e65100;">🍬 Calc. Unitaria (Completa)</h4>
+            <input type="number" id="auxPrecio" placeholder="$ Precio Paquete">
+            <input type="number" id="auxCant" placeholder="Cantidad que trae">
+            <button class="btn-aux" onclick="calcUnitario()">1. Calcular Unidad</button>
+            <div id="resUnitario" style="text-align:center; margin-top:5px; font-weight:700; color: var(--menta-brand); font-size: 16px;"></div>
+            
+            <div style="margin-top:20px; border-top: 1px dotted #ccc; padding-top:15px;">
+                <label style="margin-top:0;">¿Cuántas usaste?</label>
+                <div class="row">
+                    <input type="number" id="auxUsadas" placeholder="Cant." style="flex:1;">
+                    <button class="btn-aux" style="margin-top:0; flex:2;" onclick="calcTotalUsado()">Ver Costo</button>
+                </div>
+                <div id="resTotalUsado" style="text-align:center; font-weight:700; color:var(--rosa-brand); margin-top:5px; font-size:16px;"></div>
+            </div>
         </div>
-        <table id="tablaHistorial">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Proyecto</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody id="bodyHistorial"></tbody>
-        </table>
-        <button onclick="reiniciarFabrica()" style="background:none; border:none; color:#ddd; font-size:10px; width:100%; margin-top:20px;">Reiniciar App</button>
+        
+        <div class="tool-section">
+            <h4 style="color:#ff6f00;">✏️ Papel A4</h4>
+            <div class="row">
+                <input type="number" id="a4Ancho" placeholder="Ancho">
+                <input type="number" id="a4Alto" placeholder="Alto">
+            </div>
+            <button class="btn-pink" onclick="calcA4()">Calcular A4</button>
+            <div id="resA4Box" style="display:none;"></div>
+        </div>
+
+        <div class="tool-section" style="border: 2px dashed var(--violeta-btn);">
+            <h4 style="color:var(--violeta-btn);">🎁 Constructor de Kits</h4>
+            <div class="combo-instr">Agrega productos, personaliza y descarga.</div>
+
+            <div style="background:#f9f9f9; padding:10px; border-radius:10px; margin-bottom:15px;">
+                <label style="margin-top:0;">Título del Flyer:</label>
+                <input type="text" id="flyerTituloInput" placeholder="Ej: PROMO SEMANAL" value="SUPER PROMO" onkeyup="actualizarFlyerLive()">
+                
+                <label>Fondo del Flyer:</label>
+                <select id="flyerBgSelect" onchange="actualizarFlyerLive()">
+                    <option value="fondo-rayas">Rayas Pastel (Original)</option>
+                    <option value="fondo-rosa">Rosa Suave</option>
+                    <option value="fondo-lila">Lila Mágico</option>
+                    <option value="fondo-menta">Menta Fresco</option>
+                    <option value="fondo-cielo">Cielo Nubes</option>
+                    <option value="fondo-atardecer">Atardecer Peach</option>
+                    <option value="fondo-galaxia">Galaxia Kawaii</option>
+                </select>
+                
+                <div class="file-upload-wrapper">
+                    <button class="btn-upload">📂 O Subir Imagen Propia...</button>
+                    <input type="file" id="bgUpload" accept="image/*" onchange="cargarFondoPropio()">
+                </div>
+            </div>
+
+            <label style="color:#e65100;">Usar Producto Guardado:</label>
+            <div class="row">
+                <select id="selectProdKit" onchange="prepararProdKit()">
+                    <option value="">Selecciona...</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <input type="number" id="kitCant" placeholder="Cant" style="width:70px; text-align:center;" value="1">
+                <input type="text" id="kitProd" placeholder="Producto" style="flex:2;">
+            </div>
+            <div class="row">
+                <input type="number" id="kitPrecio" placeholder="$ Precio Unit." style="flex:2;">
+                <button class="btn-small btn-add" style="flex:1; height:45px; margin-top:5px;" onclick="agregarItemKit()">+</button>
+            </div>
+
+            <div id="listaKitVisual">
+                <div style="text-align:center; color:#ccc; font-style:italic;">Carrito vacío</div>
+            </div>
+
+            <label style="margin-top:20px; color:var(--violeta-btn);">Descuento (%):</label>
+            <div class="row">
+                <input type="number" id="comboDescInput" placeholder="%" value="0" style="text-align:center;" onchange="actualizarFlyerLive()">
+            </div>
+            <div class="promo-tags">
+                <span class="tag-btn" onclick="setPromo(50, '2x1 (50%)')">2x1 (50%)</span>
+                <span class="tag-btn" onclick="setPromo(33.33, '3x2 (33%)')">3x2</span>
+                <span class="tag-btn" onclick="setPromo(10, '10% Off')">10% Off</span>
+                <span class="tag-btn" onclick="setPromo(0)" style="background:#eee; color:#777;">Limpiar</span>
+            </div>
+            <input type="hidden" id="comboDescLabel">
+            
+            <label style="margin-top:20px;">Válido hasta (Opcional):</label>
+            <input type="date" id="flyerFecha" onchange="actualizarFlyerLive()">
+
+            <div id="previewContainer">
+                <strong style="color:var(--violeta-btn); font-size:11px; display:block; margin-bottom:5px;">VISTA PREVIA (Chica):</strong>
+                <div id="flyerPastel" class="fondo-rayas">
+                    <div class="fly-card">
+                        <p class="fly-subtitle">OFERTA ESPECIAL</p>
+                        <h1 class="fly-title" id="fly_title_text">SUPER<br>PROMO</h1>
+                        <ul class="fly-list" id="fly_lista"></ul>
+                        <div style="margin-top:15px;">
+                            <span class="fly-total-label">LLEVATELO POR:</span>
+                            <span class="fly-total" id="fly_total">$0</span>
+                        </div>
+                        <div class="fly-footer">
+                            <div id="fly_fecha_creacion" style="margin-bottom:3px; font-size:9px;"></div>
+                            <div id="fly_vencimiento" style="margin-bottom:3px;"></div>
+                            <div style="color: #ff5983;">@donattedonut</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:15px; display:flex; gap:5px; justify-content:center; flex-wrap:wrap;">
+                    <button class="btn-purple" style="margin-top:0; width:auto; font-size:12px;" onclick="descargarFlyerReal()">📸 Descargar</button>
+                    <button class="btn-final btn-insta" style="margin-top:0; width:auto; font-size:12px;" onclick="mostrarModalInstagram('kit')">📝 Instagram</button> 
+                    <button class="btn-save" style="margin-top:0; border-radius:12px; font-weight:600; width:auto; padding:0 10px; font-size:12px;" onclick="guardarComboHistorial()">💾 Guardar Modelo</button>
+                    <button class="btn-blue" style="margin-top:0; border-radius:12px; font-weight:600; width:auto; padding:0 10px; font-size:12px;" onclick="guardarKitEnCatalogo()">📚 Catálogo</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
 
-<div id="ticketArea">
-    <div style="text-align:center; margin-bottom:20px;">
-        <p style="font-size:22px; font-weight:bold; color:#ff5983; margin:0; text-transform:uppercase;">Donatte Donut</p>
-        <p style="font-size:14px; color:#888;">Presupuesto</p>
+<div class="card bottom-panel">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3 style="margin:0; color: #8d6e63; border:none;">📂 Últimos Pedidos</h3>
+        <button class="btn-small" style="background:#f1f1f1; color:#999;" onclick="borrarTodoHistorial()">Borrar Todo</button>
     </div>
-    <div style="background:#fff5f8; padding:10px; border-radius:10px; margin-bottom:20px; text-align:center; font-weight:600;">
-        <span id="ticketCliente">---</span>
+    <table id="tablaHistorial">
+        <thead>
+            <tr>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Proyecto</th>
+                <th>Total</th>
+                <th style="text-align:center;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="bodyHistorial"></tbody>
+    </table>
+</div>
+
+<div id="modalStock" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-btn" onclick="document.getElementById('modalStock').style.display='none'">&times;</span>
+        <h3 style="color:var(--menta-brand); margin-top:0;">📦 Control de Stock</h3>
+        <p style="font-size:12px; color:#555;">Aquí puedes ajustar las cantidades reales de tus insumos.</p>
+        <div id="stockLista" style="max-height: 300px; overflow-y:auto;"></div>
     </div>
-    
-    <div class="res-row"><span>Materiales:</span> <span id="ticketMat">$0</span></div>
-    <div class="res-row"><span>Mano de Obra:</span> <span id="ticketMano">$0</span></div>
-    <div class="res-row"><span>Diseño:</span> <span id="ticketDiseno">$0</span></div>
-    <div class="res-divider"></div>
-    <div class="res-final" id="ticketTotalFinal">$0</div>
-    
-    <div style="text-align:center; font-size:12px; margin-top:20px; color:#aaa;">¡Gracias por tu confianza!</div>
+</div>
+
+<div id="modalInstagram" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-btn" onclick="document.getElementById('modalInstagram').style.display='none'">&times;</span>
+        <h3 style="color:var(--violeta-btn); margin-top:0;">📸 Generador de Textos</h3>
+        <p style="font-size:12px; color:#555;">Elige el estilo de tu post:</p>
+        <button class="btn-purple" onclick="generarCopy('vendedor')">🔥 Venta Directa (Corto y al pie)</button>
+        <button class="btn-pink" style="margin-top:10px;" onclick="generarCopy('emocional')">💖 Emocional (Storytelling)</button>
+        <button class="btn-aux" style="margin-top:10px;" onclick="generarCopy('minimal')">✨ Minimalista (Estético)</button>
+        <div style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px;">
+            <strong style="color:var(--menta-brand);">🤖 Generar con IA Real:</strong>
+            <p style="font-size:11px; color:#666;">Copia este prompt y pégalo en ChatGPT/Gemini junto con la foto de tu producto.</p>
+            <button class="btn-ai" style="width:100%; padding:12px; border-radius:10px; font-weight:bold; cursor:pointer;" onclick="generarCopy('ia')">✨ Copiar Prompt para IA</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalStats" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-btn" onclick="document.getElementById('modalStats').style.display='none'">&times;</span>
+        <h3 style="color:var(--menta-brand); margin-top:0;">📊 Finanzas y Estadísticas</h3>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-label">Ventas Reales</span>
+                <span class="stat-val" id="stVentas">$0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">En Presupuestos</span>
+                <span class="stat-val" id="stPendiente" style="color:#ff9800;">$0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Ganancia Neta</span>
+                <span class="stat-val" id="stGanancia" style="color:#2e7d32;">$0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Ventas Totales</span>
+                <span class="stat-val" id="stPedidos" style="color:#555;">0</span>
+            </div>
+        </div>
+        <p style="text-align:center; font-size:11px; color:#999; margin-top:15px;">Solo se suman los pedidos marcados como "Vendido" (✅).</p>
+    </div>
+</div>
+
+<div id="modalDetalle" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-btn" onclick="cerrarModal()">&times;</span>
+        <h3 id="mTitulo" style="color:var(--rosa-brand); margin-top:0;">Detalle</h3>
+        <span id="mFecha" style="font-size:11px; color:#999;"></span>
+        
+        <div style="background:#f9f9f9; padding:10px; border-radius:10px; margin:10px 0;">
+            <strong style="font-size:11px;">Detalle de Productos:</strong>
+            <ul id="mMateriales" style="padding-left:15px; margin:5px 0; font-size:12px; color:#555;"></ul>
+        </div>
+
+        <div id="detallesNormales" style="font-size:13px; line-height: 1.6;">
+            <p><strong>Mano de Obra:</strong> <span id="mManoDetalle"></span></p>
+            <p><strong>Desgaste:</strong> <span id="mDesgaste"></span></p>
+            <p><strong>Diseño:</strong> <span id="mDiseno"></span></p>
+            <p style="color:var(--verde-venta);"><strong>Ganancia:</strong> <span id="mGanancia"></span></p>
+        </div>
+
+        <div id="detallesCombo" style="font-size:14px; line-height: 1.6; display:none; text-align:center; margin-top:10px; border-top:1px dashed #ccc; padding-top:10px;">
+            <p>Total Lista: <span id="cTotalLista" style="text-decoration:line-through; color:#999;"></span></p>
+            <p id="cDescuento" style="color:var(--violeta-btn); font-weight:bold;"></p>
+        </div>
+
+        <hr style="border:0; border-top:1px dashed #ccc;">
+        <h2 id="mTotal" style="text-align:center; color:var(--verde-venta); font-size:22px;"></h2>
+    </div>
+</div>
+
+<div id="modalCatalogo" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-btn" onclick="document.getElementById('modalCatalogo').style.display='none'">&times;</span>
+        <h3 style="color:var(--menta-brand); margin-top:0;">📂 Catálogo de Productos</h3>
+        <input type="text" class="search-box" id="searchCat" placeholder="🔍 Buscar producto..." onkeyup="filtrarCatalogo()">
+        <div id="catalogoLista" style="max-height: 300px; overflow-y:auto; margin-top:10px;"></div>
+        <div id="editForm" style="display:none; background:#f5f5f5; padding:15px; border-radius:10px; margin-top:10px;">
+            <h4 style="margin-top:0;">✏️ Editar Producto</h4>
+            <input type="hidden" id="editIndex">
+            <label>Nombre:</label>
+            <input type="text" id="editNombre">
+            <label>Precio Venta:</label>
+            <input type="number" id="editPrecio">
+            <label>Detalles:</label>
+            <textarea id="editDetalle"></textarea>
+            <div style="display:flex; gap:5px; margin-top:10px;">
+                <button class="btn-save" onclick="guardarEdicion()">💾 Guardar</button>
+                <button class="btn-trash" onclick="cancelarEdicion()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalConfig" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-btn" onclick="document.getElementById('modalConfig').style.display='none'">&times;</span>
+        <h3 style="color:var(--rosa-brand); margin-top:0;">⚙️ Configuración</h3>
+        <div class="section-header">Tu Logo</div>
+        <p style="font-size:12px; color:#666;">Sube tu logo para que aparezca en los tickets.</p>
+        <input type="file" id="inpLogo" accept="image/*" onchange="cargarLogo()">
+        <button class="btn-trash" style="margin-top:5px; width:100%; font-size:12px;" onclick="borrarLogo()">🗑️ Quitar Logo</button>
+        <div class="section-header" style="margin-top:20px;">Copia de Seguridad</div>
+        <p style="font-size:12px; color:#666;">Guarda tus datos (productos y precios) para no perderlos si borras el caché.</p>
+        <button class="btn-purple" id="btnBackup" onclick="descargarBackup()">⬇️ Descargar Copia</button>
+        <div style="margin-top:15px; border-top:1px dashed #ccc; padding-top:10px;">
+            <p style="font-size:12px; font-weight:bold;">Restaurar Copia:</p>
+            <input type="file" id="inpRestore" accept=".json">
+            <button class="btn-save" style="width:100%; margin-top:5px;" onclick="subirBackup()">⬆️ Restaurar Datos</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalInstall" class="modal-overlay">
+    <div class="modal-box install-guide">
+        <span class="close-btn" onclick="document.getElementById('modalInstall').style.display='none'">&times;</span>
+        <h3 style="color:var(--menta-brand);">📲 Instalar App</h3>
+        <p>¡Agrega Donatte a tu inicio para usarla a pantalla completa!</p>
+        <div id="guideIOS" style="display:none;">
+            <div class="install-step">1. Toca el botón <strong>Compartir</strong> <span style="font-size:20px;">🛫</span> abajo en Safari.</div>
+            <div class="install-step">2. Busca y selecciona <strong>"Agregar a Inicio"</strong> <span style="font-size:20px;">➕</span>.</div>
+        </div>
+        <div id="guideAndroid" style="display:none;">
+            <div class="install-step">1. Toca los <strong>3 puntitos</strong> <span style="font-size:20px;">⋮</span> arriba a la derecha.</div>
+            <div class="install-step">2. Elige <strong>"Instalar aplicación"</strong> o <strong>"Agregar a la pantalla principal"</strong>.</div>
+        </div>
+        <div id="guideDesktop" style="display:none;">
+            <div class="install-step">Usa el menú de tu navegador para "Instalar" o "Crear Acceso Directo".</div>
+        </div>
+    </div>
+</div>
+
+<div id="ticketCliente" class="ticket-base">
+    <div id="tc_header_content">
+        <p class="tc-logo">Donatte Donut</p> 
+    </div>
+    <div class="tc-box">
+        <p style="font-size:14px; color:#888; margin:0;">DETALLE DEL PEDIDO</p>
+        <p class="tc-prod" id="tc_nombre">---</p>
+        <p id="tc_fecha" style="font-size:11px; color:#999; margin-top:0;">---</p>
+        <div id="tc_items_container" style="text-align:left; margin: 15px 0;"></div>
+        <p style="font-size:14px; color:#888; margin:0; margin-top:20px;">TOTAL A PAGAR</p>
+        <p class="tc-price" id="tc_total">$0</p>
+    </div>
+    <div class="tc-footer">
+        ¡Gracias por elegirnos!<br>
+        <strong>Trabajamos con 50% de seña para congelar precio.</strong><br>
+        Este presupuesto tiene una validez de 48hs.
+    </div>
+</div>
+
+<div id="ticketInterno" class="ticket-base">
+    <div id="ti_header_content"></div>
+    <h2 style="text-align:center; color:#555;">FICHA INTERNA</h2>
+    <div style="margin-bottom:15px; border-bottom:1px solid #eee;">
+        <strong>Proyecto:</strong> <span id="ti_nombre"></span><br>
+        <span style="font-size:11px;" id="ti_fecha"></span>
+    </div>
+    <strong style="font-size:12px;">Materiales:</strong>
+    <ul id="ti_listaMats" style="font-size:12px; color:#666;"></ul>
+    <div style="background:#f5f5f5; padding:10px; margin-top:10px; font-size:13px;">
+        <div>Desgaste: <span id="ti_desgaste"></span></div>
+        <div>Mano Obra: <span id="ti_mano"></span></div>
+        <div>Diseño: <span id="ti_diseno"></span></div>
+    </div>
+    <div style="margin-top:10px; font-weight:bold; color:#c2185b;">COSTO: <span id="ti_costo"></span></div>
+    <div style="color:#2e7d32;">GANANCIA: <span id="ti_ganancia"></span></div>
+    <div style="border-top:2px dashed #333; margin-top:15px; text-align:center; font-size:20px; font-weight:bold;">PRECIO DE VENTA: <span id="ti_total"></span></div>
 </div>
 
 <script>
-    // --- LÓGICA V9 ---
-    let ultimoTotal = 0;
-    let costoUnitarioTemp = 0;
-    let datosParaTicket = {};
+    // --- LÓGICA V77: CONTROL STOCK & CLEAN UI ---
+    
+    let materialesPresupuesto = []; 
+    let dbMateriales = []; 
+    let dbProductos = []; 
+    let itemsKit = [];
+    let datosGlobales = {}; 
+    let origenInstagram = ''; 
 
-    function getNum(id) {
-        let val = document.getElementById(id).value;
-        if(val === "" || val === null) return 0;
-        return parseFloat(val);
+    function iniciarApp() {
+        let savedMats = localStorage.getItem("donatte_materiales_db");
+        if(savedMats) { 
+            dbMateriales = JSON.parse(savedMats); 
+            // Migrar vieja DB a nueva con stock
+            dbMateriales.forEach(m => { if(m.stock === undefined) m.stock = 0; });
+        } else {
+            dbMateriales = [
+                {nombre: "Hoja A4 Opalina", precio: 50, stock: 100}, 
+                {nombre: "Hoja A4 Fotográfico", precio: 120, stock: 50}, 
+                {nombre: "Laminado", precio: 80, stock: 200}
+            ];
+        }
+        let savedProds = localStorage.getItem("donatte_productos_db");
+        if(savedProds) { dbProductos = JSON.parse(savedProds); }
+
+        let savedLogo = localStorage.getItem("donatte_logo");
+        if(savedLogo) { renderizarLogo(savedLogo); }
+
+        actualizarDropdown();
+        actualizarDropdownProductos();
+
+        let config = JSON.parse(localStorage.getItem("donatte_config") || "{}");
+        if(config.hora) document.getElementById("inpHora").value = config.hora;
+        if(config.desgaste) document.getElementById("inpDesgasteCosto").value = config.desgaste;
+        cargarTabla();
     }
 
-    function nuevoMaterial() {
-        let div = document.createElement("div");
-        div.className = "row mat-item";
-        div.innerHTML = `
-            <input type="text" class="m-nom" placeholder="Material">
-            <input type="number" class="m-val" placeholder="$">
-            <button class="btn-remove" onclick="this.parentElement.remove()">✕</button>
-        `;
-        document.getElementById("listaMateriales").appendChild(div);
+    // --- CONTROL STOCK ---
+    function abrirModalStock() {
+        let container = document.getElementById("stockLista");
+        container.innerHTML = "";
+        
+        dbMateriales.forEach((mat, index) => {
+            let div = document.createElement("div");
+            div.className = "stock-row";
+            div.innerHTML = `
+                <span class="stock-name">${mat.nombre}</span>
+                <input type="number" id="stk_${index}" value="${mat.stock}" class="stock-input">
+                <button class="stock-update-btn" onclick="actualizarUnStock(${index})">Guardar</button>
+            `;
+            container.appendChild(div);
+        });
+        document.getElementById("modalStock").style.display = 'flex';
+    }
+
+    function actualizarUnStock(index) {
+        let val = parseInt(document.getElementById(`stk_${index}`).value) || 0;
+        dbMateriales[index].stock = val;
+        localStorage.setItem("donatte_materiales_db", JSON.stringify(dbMateriales));
+        alert("Stock actualizado ✅");
+    }
+
+    // --- INSTAGRAM COPY GENERATOR ---
+    function mostrarModalInstagram(origen) {
+        origenInstagram = origen;
+        if (origen === 'kit' && itemsKit.length === 0) return alert("Arma un kit primero");
+        if (origen === 'presupuesto' && !datosGlobales.total) return alert("Calcula primero");
+        document.getElementById("modalInstagram").style.display = 'flex';
+    }
+
+    function generarCopy(estilo) {
+        let nombre = "", total = "", itemsText = "";
+        
+        if (origenInstagram === 'kit') {
+            nombre = document.getElementById("flyerTituloInput").value || "SÚPER PROMO";
+            total = document.getElementById("fly_total").innerText;
+            itemsText = itemsKit.map(i => `- ${i.nombre}`).join("\n");
+        } else {
+            nombre = datosGlobales.nombre || "Este hermoso pedido";
+            total = formatMoney(datosGlobales.total);
+            itemsText = datosGlobales.listaMateriales.map(i => `- ${i.nombre}`).join("\n");
+        }
+
+        let textoFinal = "";
+        if (estilo === 'ia') {
+            textoFinal = `Actúa como un experto en marketing de redes sociales para un emprendimiento de papelería creativa y kits de fiesta. Escribe un caption (texto) atractivo para Instagram para vender este producto:\n\nProducto: ${nombre}\nQué incluye:\n${itemsText}\nPrecio: ${total}\n\nUsa emojis, hashtags como #DonatteDonut #PapeleriaCreativa y un tono divertido pero profesional. Haz llamados a la acción para que comenten o manden mensaje.`;
+            alert("¡Prompt Copiado! 🧠\nAhora ve a ChatGPT o Gemini, pega este texto y sube la foto de tu producto.");
+        } else if (estilo === 'vendedor') {
+            textoFinal = `¡ATENCIÓN! 🚨 ${nombre} disponible YA.\n\nMirá todo lo que trae:\n${itemsText}\n\n🔥 PRECIO ESPECIAL: ${total}\n\nNo te cuelgues que vuelan. 🏃‍♀️\n¡Pedilo ahora por mensaje directo! 💌\n#DonatteDonut #Oferta`;
+        } else if (estilo === 'emocional') {
+            textoFinal = `Hacemos cada detalle con mucho amor 💖\n\n${nombre} listo para celebrar momentos únicos. ✨\n\nIncluye:\n${itemsText}\n\nValor: ${total}\n\nGracias por dejarnos ser parte de sus festejos. 🥰\nConsultanos para tu evento! 👇\n#PapeleriaConAmor #DonatteDonut`;
+        } else if (estilo === 'minimal') {
+            textoFinal = `${nombre} ✨\n\n${itemsText}\n\n▫️ ${total}\n\nInfo y pedidos al DM 📩\n#DonatteDonut`;
+        }
+
+        navigator.clipboard.writeText(textoFinal).then(() => {
+            if (estilo !== 'ia') alert("Texto copiado! Pegalo en Instagram 📸");
+            document.getElementById("modalInstagram").style.display = 'none';
+        });
+    }
+
+    // --- DASHBOARD (SOLO VENTAS REALES Y PRESUPUESTOS) ---
+    function abrirStats() {
+        let historial = JSON.parse(localStorage.getItem("donatte_historial_v71") || "[]");
+        let totalVentas = 0, totalGanancia = 0, totalPendiente = 0, ventasCount = 0;
+
+        historial.forEach(item => {
+            if (item.status === 'vendido') {
+                totalVentas += item.total || 0;
+                totalGanancia += item.ganancia || 0;
+                ventasCount++;
+            } else if (item.esPresupuesto) { 
+                totalPendiente += item.total || 0;
+            }
+        });
+
+        document.getElementById("stVentas").innerText = formatMoney(totalVentas);
+        document.getElementById("stGanancia").innerText = formatMoney(totalGanancia);
+        document.getElementById("stPendiente").innerText = formatMoney(totalPendiente);
+        document.getElementById("stPedidos").innerText = ventasCount;
+        document.getElementById("modalStats").style.display = "flex";
+    }
+
+    function mostrarInstrucciones() { document.getElementById("modalInstall").style.display = 'flex'; }
+
+    // --- LOGO & CONFIG ---
+    function abrirConfig() { document.getElementById("modalConfig").style.display = 'flex'; }
+    
+    function cargarLogo() {
+        const input = document.getElementById('inpLogo');
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                let base64 = e.target.result;
+                localStorage.setItem("donatte_logo", base64);
+                renderizarLogo(base64);
+                alert("Logo guardado correctamente ✨");
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function borrarLogo() {
+        if(confirm("¿Quitar logo?")) {
+            localStorage.removeItem("donatte_logo");
+            let container = document.getElementById("titleContainer");
+            let logo = container.querySelector(".logo-img-header");
+            if(logo) logo.remove();
+            document.getElementById("tc_header_content").innerHTML = '<p class="tc-logo">Donatte Donut</p>';
+            document.getElementById("ti_header_content").innerHTML = '';
+            alert("Logo eliminado.");
+        }
+    }
+
+    function renderizarLogo(base64) {
+        let container = document.getElementById("titleContainer");
+        let titleText = document.getElementById("appTitleText");
+        let oldLogo = container.querySelector(".logo-img-header");
+        if (oldLogo) oldLogo.remove();
+
+        let img = document.createElement("img");
+        img.src = base64;
+        img.className = "logo-img-header";
+        container.insertBefore(img, titleText); 
+
+        let imgHtml = `<img src="${base64}" class="tc-logo-img"><p class="tc-logo">DONATTEDONUT</p>`;
+        document.getElementById("tc_header_content").innerHTML = imgHtml;
+        document.getElementById("ti_header_content").innerHTML = imgHtml;
+    }
+
+    // --- BACKUP ---
+    function descargarBackup() {
+        let data = {
+            materiales: dbMateriales,
+            productos: dbProductos,
+            historial: JSON.parse(localStorage.getItem("donatte_historial_v71") || "[]"),
+            config: JSON.parse(localStorage.getItem("donatte_config") || "{}")
+        };
+        let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+        let downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", "donatte_backup.json");
+        document.body.appendChild(downloadAnchorNode);
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+    }
+
+    function subirBackup() {
+        let input = document.getElementById("inpRestore");
+        if (!input.files.length) return alert("Selecciona el archivo .json");
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                let data = JSON.parse(e.target.result);
+                if(data.materiales) localStorage.setItem("donatte_materiales_db", JSON.stringify(data.materiales));
+                if(data.productos) localStorage.setItem("donatte_productos_db", JSON.stringify(data.productos));
+                if(data.historial) localStorage.setItem("donatte_historial_v71", JSON.stringify(data.historial));
+                if(data.config) localStorage.setItem("donatte_config", JSON.stringify(data.config));
+                alert("Datos restaurados con éxito! 🔄");
+                location.reload();
+            } catch(err) { alert("Error al leer el archivo. Asegúrate que sea el correcto."); }
+        };
+        reader.readAsText(input.files[0]);
+    }
+
+    // --- RESTO DE FUNCIONES ---
+    function guardarConfig() {
+        let config = { hora: document.getElementById("inpHora").value, desgaste: document.getElementById("inpDesgasteCosto").value };
+        localStorage.setItem("donatte_config", JSON.stringify(config));
+    }
+
+    function actualizarDropdown() {
+        let select = document.getElementById("selectMateriales");
+        select.innerHTML = '<option value="">Selecciona insumo...</option>';
+        dbMateriales.forEach((mat, index) => {
+            let opt = document.createElement("option"); opt.value = index; opt.text = `${mat.nombre} - $${mat.precio} (Stock: ${mat.stock || 0})`; select.appendChild(opt);
+        });
+    }
+
+    function actualizarDropdownProductos() {
+        let select = document.getElementById("selectProductosGuardados");
+        let selectKit = document.getElementById("selectProdKit"); 
+        let html = '<option value="">Selecciona guardado...</option>';
+        dbProductos.forEach((prod, index) => {
+            html += `<option value="${index}">${prod.nombre} - $${formatMoney(prod.precio)}</option>`;
+        });
+        select.innerHTML = html;
+        selectKit.innerHTML = html;
+    }
+    
+    function prepararMaterial() {
+        let index = document.getElementById("selectMateriales").value;
+        if(index !== "") { 
+            let mat = dbMateriales[index];
+            document.getElementById("matCostoActual").value = mat.precio; 
+            if(mat.stock <= 5) alert(`⚠️ Atención: Quedan solo ${mat.stock} unidades de ${mat.nombre}`);
+        }
+    }
+
+    function prepararProdKit() {
+        let index = document.getElementById("selectProdKit").value;
+        if(index !== "") {
+            let prod = dbProductos[index];
+            document.getElementById("kitProd").value = prod.nombre;
+            document.getElementById("kitPrecio").value = prod.precio;
+        }
+    }
+    
+    function cargarFondoPropio() {
+        const input = document.getElementById('bgUpload');
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                let flyer = document.getElementById('flyerPastel');
+                flyer.style.backgroundImage = `url(${e.target.result})`;
+                flyer.className = ""; 
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    function toggleNuevoMat() {
+        let form = document.getElementById("formNuevoMat"); form.style.display = form.style.display === "block" ? "none" : "block";
+    }
+    
+    function guardarMaterialEnDb() {
+        let nombre = document.getElementById("newMatNombre").value;
+        let precio = parseFloat(document.getElementById("newMatPrecio").value);
+        let stock = parseInt(document.getElementById("newMatStock").value) || 0;
+        if(nombre && precio) {
+            dbMateriales.push({nombre: nombre, precio: precio, stock: stock});
+            localStorage.setItem("donatte_materiales_db", JSON.stringify(dbMateriales));
+            actualizarDropdown();
+            document.getElementById("formNuevoMat").style.display = "none";
+            alert("Insumo guardado! 🧠");
+        }
+    }
+
+    function borrarMaterialDb() {
+        let select = document.getElementById("selectMateriales");
+        let index = select.value;
+        if (index === "") return alert("Selecciona para borrar");
+        if(confirm(`¿Borrar para siempre este insumo?`)) {
+            dbMateriales.splice(index, 1);
+            localStorage.setItem("donatte_materiales_db", JSON.stringify(dbMateriales));
+            actualizarDropdown();
+            document.getElementById("matCostoActual").value = "";
+        }
+    }
+
+    // --- FUNCIONES CATALOGO (CRUD + BUSCADOR) ---
+    function borrarProductoDb() {
+        let select = document.getElementById("selectProductosGuardados");
+        let index = select.value;
+        if (index === "") return alert("Selecciona producto para borrar");
+        borrarProdIndex(index);
+    }
+
+    function borrarProdIndex(index) {
+        if(confirm(`¿Borrar este producto de la lista?`)) {
+            dbProductos.splice(index, 1);
+            localStorage.setItem("donatte_productos_db", JSON.stringify(dbProductos));
+            actualizarDropdownProductos();
+            abrirCatalogo(); 
+        }
+    }
+
+    function abrirCatalogo() {
+        renderizarCatalogo(dbProductos);
+        document.getElementById("editForm").style.display = "none";
+        document.getElementById("catalogoLista").style.display = "block";
+        document.getElementById("modalCatalogo").style.display = 'flex';
+        document.getElementById("searchCat").value = ""; // Reset search
+    }
+
+    function filtrarCatalogo() {
+        let term = document.getElementById("searchCat").value.toLowerCase();
+        let filtrados = dbProductos.filter(p => p.nombre.toLowerCase().includes(term));
+        renderizarCatalogo(filtrados);
+    }
+
+    function renderizarCatalogo(lista) {
+        let container = document.getElementById("catalogoLista");
+        container.innerHTML = "";
+        if(lista.length === 0) {
+            container.innerHTML = "<div style='text-align:center; color:#999;'>No se encontraron productos</div>";
+        } else {
+            lista.forEach((prod) => {
+                let originalIndex = dbProductos.indexOf(prod);
+                let gananciaText = prod.ganancia ? `<span class="cat-profit">Ganancia: ${formatMoney(prod.ganancia)} (${prod.gananciaPorc}%)</span>` : "<span class='cat-meta'>Sin detalles de ganancia</span>";
+                let detalleText = prod.detalle ? `<div class="cat-detail">📝 ${prod.detalle}</div>` : "";
+
+                let html = `
+                <div class="cat-item">
+                    <div class="cat-info">
+                        <div class="cat-name">${prod.nombre}</div>
+                        <div class="cat-meta">Precio Venta: <strong>${formatMoney(prod.precio)}</strong></div>
+                        ${gananciaText}
+                        ${detalleText}
+                    </div>
+                    <div style="display:flex;">
+                        <button class="btn-edit" onclick="iniciarEdicion(${originalIndex})">✏️</button>
+                        <button class="btn-remove" onclick="borrarProdIndex(${originalIndex})">🗑️</button>
+                    </div>
+                </div>`;
+                container.innerHTML += html;
+            });
+        }
+    }
+
+    function iniciarEdicion(index) {
+        let prod = dbProductos[index];
+        document.getElementById("catalogoLista").style.display = "none";
+        document.getElementById("editForm").style.display = "block";
+        
+        document.getElementById("editIndex").value = index;
+        document.getElementById("editNombre").value = prod.nombre;
+        document.getElementById("editPrecio").value = prod.precio;
+        document.getElementById("editDetalle").value = prod.detalle || "";
+    }
+
+    function cancelarEdicion() {
+        document.getElementById("editForm").style.display = "none";
+        document.getElementById("catalogoLista").style.display = "block";
+    }
+
+    function guardarEdicion() {
+        let index = document.getElementById("editIndex").value;
+        let nombre = document.getElementById("editNombre").value;
+        let precio = parseFloat(document.getElementById("editPrecio").value);
+        let detalle = document.getElementById("editDetalle").value;
+
+        if (nombre && precio) {
+            dbProductos[index].nombre = nombre;
+            dbProductos[index].precio = precio;
+            dbProductos[index].detalle = detalle;
+            
+            localStorage.setItem("donatte_productos_db", JSON.stringify(dbProductos));
+            actualizarDropdownProductos();
+            abrirCatalogo(); // Volver a lista
+        }
+    }
+
+    function guardarProductoManualDb() {
+        let nombre = document.getElementById("prodManualNombre").value;
+        let precio = parseFloat(document.getElementById("prodManualPrecio").value);
+        let detalle = document.getElementById("prodManualDetalle").value;
+        
+        if(nombre && precio > 0) {
+            dbProductos.push({
+                nombre: nombre, 
+                precio: precio, 
+                detalle: detalle,
+                ganancia: 0, 
+                gananciaPorc: 0, 
+                manual: true 
+            });
+            localStorage.setItem("donatte_productos_db", JSON.stringify(dbProductos));
+            actualizarDropdownProductos();
+            alert("¡Producto manual guardado! 💾");
+        } else {
+            alert("Escribe un nombre y precio para guardar.");
+        }
+    }
+    
+    // --- NUEVO: GUARDAR KIT EN CATALOGO ---
+    function guardarKitEnCatalogo() {
+        if(itemsKit.length === 0) return alert("Arma un combo primero");
+        let nombre = prompt("Nombre para guardar este Kit en Catálogo:", "Kit Escolar");
+        if(!nombre) return;
+
+        let total = itemsKit.reduce((sum, item) => sum + item.precio, 0);
+        let desc = parseFloat(document.getElementById("comboDescInput").value) || 0;
+        let final = Math.round(total - (total * (desc/100))); 
+        
+        let detalleItems = itemsKit.map(i => i.nombre).join(", ");
+        let detalleCompleto = `Kit incluye: ${detalleItems}. (${desc > 0 ? desc + '% Off aplicado' : 'Precio Lista'})`;
+
+        dbProductos.push({
+            nombre: "🎁 " + nombre, 
+            precio: final,
+            detalle: detalleCompleto,
+            ganancia: 0, 
+            gananciaPorc: 0, 
+            manual: true 
+        });
+        localStorage.setItem("donatte_productos_db", JSON.stringify(dbProductos));
+        actualizarDropdownProductos();
+        alert("¡Kit guardado en Catálogo! 📚");
+    }
+
+    function guardarComoProducto() {
+        if(!datosGlobales.total) return alert("Primero calcula un precio");
+        let nombre = prompt("Nombre para guardar este producto:", datosGlobales.nombre);
+        if(nombre) {
+            dbProductos.push({
+                nombre: nombre, 
+                precio: datosGlobales.total,
+                ganancia: datosGlobales.ganancia,
+                gananciaPorc: datosGlobales.gananciaPorc,
+                costo: datosGlobales.costoPuro,
+                detalle: "Creado desde Calculadora"
+            });
+            localStorage.setItem("donatte_productos_db", JSON.stringify(dbProductos));
+            actualizarDropdownProductos();
+            alert("¡Producto guardado en tu base de datos! 📦");
+        }
+    }
+
+    function agregarMaterialAlPresupuesto() {
+        let select = document.getElementById("selectMateriales");
+        let costoUnitario = parseFloat(document.getElementById("matCostoActual").value);
+        let cantidad = parseFloat(document.getElementById("matCant").value) || 1;
+        let nombreMaterial = select.value !== "" ? dbMateriales[select.value].nombre : "Material Personalizado";
+
+        if(costoUnitario > 0) {
+            let precioTotal = costoUnitario * cantidad;
+            let nombreDisplay = cantidad > 1 ? `${nombreMaterial} (x${cantidad})` : nombreMaterial;
+            materialesPresupuesto.push({nombre: nombreDisplay, precio: precioTotal});
+            renderizarListaVisual();
+            select.value = ""; document.getElementById("matCostoActual").value = ""; document.getElementById("matCant").value = "1"; 
+        }
+    }
+
+    function agregarProductoAlPresupuesto() {
+        let select = document.getElementById("selectProductosGuardados");
+        let index = select.value;
+        let cantidad = parseFloat(document.getElementById("prodCant").value) || 1;
+        
+        let nombre = "";
+        let precio = 0;
+
+        let manualNombre = document.getElementById("prodManualNombre").value;
+        let manualPrecio = parseFloat(document.getElementById("prodManualPrecio").value);
+
+        if (manualNombre && manualPrecio > 0) {
+            nombre = manualNombre;
+            precio = manualPrecio;
+            document.getElementById("prodManualNombre").value = "";
+            document.getElementById("prodManualPrecio").value = "";
+            document.getElementById("prodManualDetalle").value = "";
+        } else if (index !== "") {
+            let prod = dbProductos[index];
+            nombre = prod.nombre;
+            precio = prod.precio;
+            select.value = "";
+        } else {
+            return alert("Selecciona un producto guardado o escribe uno manual");
+        }
+
+        let precioTotal = precio * cantidad;
+        let nombreDisplay = cantidad > 1 ? `📦 ${nombre} (x${cantidad})` : `📦 ${nombre}`;
+        
+        materialesPresupuesto.push({nombre: nombreDisplay, precio: precioTotal});
+        renderizarListaVisual();
+        document.getElementById("prodCant").value = "1";
+    }
+
+    function renderizarListaVisual() {
+        let container = document.getElementById("listaMaterialesVisual"); container.innerHTML = "";
+        if(materialesPresupuesto.length === 0) { container.innerHTML = '<div style="text-align:center; color:#ccc; font-size:12px;">Lista vacía</div>'; return; }
+        materialesPresupuesto.forEach((item, index) => {
+            let div = document.createElement("div"); div.className = "mat-agregado-row";
+            div.innerHTML = `<span>${item.nombre}</span><div style="display:flex;gap:10px;"><strong>${formatMoney(item.precio)}</strong><button class="btn-remove" onclick="borrarMaterial(${index})">✕</button></div>`;
+            container.appendChild(div);
+        });
+    }
+    function borrarMaterial(index) { materialesPresupuesto.splice(index, 1); renderizarListaVisual(); }
+
+    function formatMoney(amount) { 
+        let val = Math.round(amount); 
+        return "$" + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); 
     }
 
     function calcular() {
         try {
-            // 1. Sumar Materiales
-            let totalMat = 0;
-            document.querySelectorAll(".m-val").forEach(inp => {
-                if(inp.value) totalMat += parseFloat(inp.value);
-            });
+            let totalMat = materialesPresupuesto.reduce((sum, item) => sum + item.precio, 0);
+            let costoDesgaste = parseFloat(document.getElementById("inpDesgasteCosto").value) || 0;
+            let cantDesgaste = parseFloat(document.getElementById("inpDesgasteCant").value) || 0;
+            let totalDesgaste = costoDesgaste * cantDesgaste;
+            let valorHora = parseFloat(document.getElementById("inpHora").value) || 0;
+            let minutos = parseFloat(document.getElementById("inpMinutos").value) || 0;
+            let totalMano = (valorHora / 60) * minutos;
+            let diseno = parseFloat(document.getElementById("inpDiseno").value) || 0;
+            let gananciaPorc = parseFloat(document.getElementById("inpGanancia").value) || 0;
 
-            // 2. Calcular otros costos
-            let valorHora = getNum("inpHora");
-            let minutos = getNum("inpMinutos");
-            let costoMano = (valorHora / 60) * minutos;
-            let diseno = getNum("inpDiseno");
-            let gananciaPorc = getNum("inpGanancia");
-
-            // 3. Totales
-            let costoPuro = totalMat + costoMano + diseno;
+            let costoPuro = totalMat + totalDesgaste + totalMano + diseno;
             let gananciaDinero = costoPuro * (gananciaPorc / 100);
             let precioFinal = costoPuro + gananciaDinero;
 
-            ultimoTotal = precioFinal;
+            let listaHTML = "";
+            materialesPresupuesto.forEach(m => { listaHTML += `<div class="res-list-item"><span>${m.nombre}</span> <span>${formatMoney(m.precio)}</span></div>`; });
+            if(listaHTML === "") listaHTML = "<span style='font-size:10px; color:#999;'>Sin materiales</span>";
+            document.getElementById("resListaMateriales").innerHTML = listaHTML;
 
-            // 4. MOSTRAR EN PANTALLA (Detallado)
-            document.getElementById("txtMat").innerText = "$" + totalMat.toFixed(2);
-            document.getElementById("txtMano").innerText = "$" + costoMano.toFixed(2);
-            document.getElementById("txtDiseno").innerText = "$" + diseno.toFixed(2);
-            document.getElementById("txtCosto").innerText = "$" + costoPuro.toFixed(2);
-            document.getElementById("txtGanancia").innerText = "$" + gananciaDinero.toFixed(2);
-            document.getElementById("txtTotal").innerText = "$" + precioFinal.toFixed(2);
-
+            document.getElementById("txtDesgaste").innerText = formatMoney(totalDesgaste);
+            document.getElementById("txtMano").innerText = formatMoney(totalMano);
+            document.getElementById("txtDiseno").innerText = formatMoney(diseno);
+            document.getElementById("txtCosto").innerText = formatMoney(costoPuro);
+            document.getElementById("txtGanancia").innerText = formatMoney(gananciaDinero) + ` (${gananciaPorc}%)`;
+            document.getElementById("txtTotal").innerText = formatMoney(precioFinal);
             document.getElementById("boxResultado").style.display = "block";
             
-            // Guardar datos para Ticket y Historial
-            datosParaTicket = {
-                nombre: document.getElementById("inpNombre").value || "Sin Nombre",
-                mat: totalMat,
-                mano: costoMano,
+            datosGlobales = {
+                nombre: document.getElementById("inpNombre").value || "Este hermoso pedido", // FIX: NOMBRE POR DEFECTO
+                fecha: new Date().toLocaleDateString(),
+                listaMateriales: [...materialesPresupuesto], 
+                totalMat: totalMat,
+                totalDesgaste: totalDesgaste,
+                totalMano: totalMano,
+                minutos: minutos, 
                 diseno: diseno,
-                total: precioFinal
+                costoPuro: costoPuro,
+                gananciaPorc: gananciaPorc, 
+                ganancia: gananciaDinero,
+                total: precioFinal,
+                esCombo: false
             };
 
         } catch (error) { alert("Error: " + error.message); }
     }
 
-    // --- DESCARGAR ---
-    function descargarImagen() {
-        document.getElementById("ticketCliente").innerText = datosParaTicket.nombre;
-        document.getElementById("ticketMat").innerText = "$" + datosParaTicket.mat.toFixed(2);
-        document.getElementById("ticketMano").innerText = "$" + datosParaTicket.mano.toFixed(2);
-        document.getElementById("ticketDiseno").innerText = "$" + datosParaTicket.diseno.toFixed(2);
-        document.getElementById("ticketTotalFinal").innerText = "$" + datosParaTicket.total.toFixed(2);
+    function copiarWhatsapp() {
+        let nombre = document.getElementById("inpNombre").value || "Tu Pedido";
+        let total = document.getElementById("txtTotal").innerText;
+        let texto = `Hola! 👋 Muchas gracias por tu consulta.\n\nTe paso el presupuesto por: *${nombre}* 🍩\n\n✨ *TOTAL: ${total}*\n\n✅ Incluye diseño, materiales y armado artesanal.\n⏳ Presupuesto válido por 48hs.\n\nTrabajamos con 50% de seña para congelar el precio y reservar fecha.\n\n¿Te paso los datos para abonar? 💖`;
+        navigator.clipboard.writeText(texto).then(() => { alert("Copiado al portapapeles 📲"); });
+    }
 
-        const ticket = document.getElementById("ticketArea");
-        ticket.style.position = "fixed"; 
-        ticket.style.left = "0";
-        ticket.style.zIndex = "-1"; 
-
+    function generarImagen(elementId, nombreArchivo) {
+        const ticket = document.getElementById(elementId);
+        ticket.style.position = "fixed"; ticket.style.left = "0"; ticket.style.zIndex = "9999";
         html2canvas(ticket).then(canvas => {
-            let link = document.createElement('a');
-            link.download = 'Presupuesto-Donatte.png';
-            link.href = canvas.toDataURL("image/png");
-            link.click();
-            ticket.style.position = "absolute";
-            ticket.style.left = "-9999px";
+            let link = document.createElement('a'); link.download = nombreArchivo; link.href = canvas.toDataURL("image/png"); link.click();
+            ticket.style.position = "absolute"; ticket.style.left = "-9999px";
         });
     }
 
-    // --- AUXILIAR ---
-    function calcUnitario() {
-        let p = getNum("auxPrecio");
-        let c = getNum("auxCant");
-        if (c === 0) c = 1;
-        costoUnitarioTemp = p / c;
-        let div = document.getElementById("resUnitario");
-        div.innerText = "$" + costoUnitarioTemp.toFixed(2) + " c/u";
-        div.style.display = "block";
+    function descargarCliente() {
+        if(!datosGlobales.total) return alert("Primero calcula");
+        document.getElementById("tc_nombre").innerText = datosGlobales.nombre;
+        document.getElementById("tc_total").innerText = formatMoney(datosGlobales.total);
+        document.getElementById("tc_fecha").innerText = "Fecha: " + datosGlobales.fecha; // FECHA AL DESCARGAR
+        
+        let container = document.getElementById("tc_items_container");
+        container.innerHTML = "";
+        if(datosGlobales.listaMateriales && datosGlobales.listaMateriales.length > 0) {
+            let ul = document.createElement("ul");
+            ul.style.listStyle = "none"; ul.style.padding = "0";
+            datosGlobales.listaMateriales.forEach(prod => {
+                let li = document.createElement("li");
+                li.style.borderBottom = "1px dashed #eee"; li.style.padding = "5px 0";
+                li.innerHTML = `✨ ${prod.nombre}`;
+                ul.appendChild(li);
+            });
+            container.appendChild(ul);
+        }
+
+        generarImagen("ticketCliente", "Presupuesto-Cliente.png");
     }
 
-    function calcTotalMat() {
-        if(costoUnitarioTemp === 0) calcUnitario();
-        let usadas = getNum("auxUsadas");
-        let total = costoUnitarioTemp * usadas;
-        let div = document.getElementById("resTotalMat");
-        div.innerText = "Total: $" + total.toFixed(2);
-        div.style.display = "block";
+    function descargarInterno() {
+        if(!datosGlobales.total) return alert("Primero calcula");
+        document.getElementById("ti_nombre").innerText = datosGlobales.nombre;
+        document.getElementById("ti_fecha").innerText = datosGlobales.fecha;
+        let ul = document.getElementById("ti_listaMats"); ul.innerHTML = "";
+        datosGlobales.listaMateriales.forEach(m => { ul.innerHTML += `<li>${m.nombre}: $${m.precio}</li>`; });
+        document.getElementById("ti_desgaste").innerText = formatMoney(datosGlobales.totalDesgaste);
+        document.getElementById("ti_mano").innerText = formatMoney(datosGlobales.totalMano);
+        document.getElementById("ti_diseno").innerText = formatMoney(datosGlobales.diseno);
+        document.getElementById("ti_costo").innerText = formatMoney(datosGlobales.costoPuro);
+        document.getElementById("ti_ganancia").innerText = formatMoney(datosGlobales.ganancia);
+        document.getElementById("ti_total").innerText = formatMoney(datosGlobales.total);
+        generarImagen("ticketInterno", "Ficha-Interna.png");
     }
 
-    // --- HISTORIAL ---
-    function guardar() {
-        let nombre = document.getElementById("inpNombre").value || "Sin Nombre";
-        let fecha = new Date().toLocaleDateString();
-        let nuevoItem = { id: Date.now(), fecha: fecha, nombre: nombre, total: ultimoTotal };
-
-        let historial = [];
-        let guardado = localStorage.getItem("appDonatte_v3");
-        if(guardado) { try { historial = JSON.parse(guardado); } catch(e) {} }
-
+    // --- NUEVO SISTEMA DE HISTORIAL CON ESTADO ---
+    function guardarHistorial() {
+        if(!datosGlobales.total) return alert("Calcula primero");
+        // ES PRESUPUESTO = TRUE (SUMA A PENDIENTE)
+        let nuevoItem = { ...datosGlobales, id: Date.now(), status: 'pendiente', esPresupuesto: true }; 
+        let historial = JSON.parse(localStorage.getItem("donatte_historial_v71") || "[]"); 
         historial.unshift(nuevoItem);
-        localStorage.setItem("appDonatte_v3", JSON.stringify(historial));
-
-        let btn = document.getElementById("btnGuardar");
-        btn.innerText = "¡Listo! 💾";
-        setTimeout(() => { btn.innerText = "💾 Guardar"; }, 2000);
+        localStorage.setItem("donatte_historial_v71", JSON.stringify(historial));
+        let btn = document.querySelector(".btn-save"); let texto = btn.innerText; btn.innerText = "¡Listo!"; setTimeout(() => { btn.innerText = texto; }, 2000);
         cargarTabla();
     }
 
+    function guardarComboHistorial() {
+        if(itemsKit.length === 0) return alert("Arma un combo primero");
+        let nombre = prompt("Nombre para este Combo (Ej: Kit Escolar):", "Combo Personalizado");
+        if(!nombre) return;
+
+        let total = itemsKit.reduce((sum, item) => sum + item.precio, 0);
+        let desc = parseFloat(document.getElementById("comboDescInput").value) || 0;
+        let final = Math.round(total - (total * (desc/100))); 
+        let label = document.getElementById("comboDescLabel").value;
+
+        // ES PRESUPUESTO = FALSE (NO SUMA A PENDIENTE, ES MODELO)
+        let nuevoItem = {
+            id: Date.now(),
+            nombre: "🎁 " + nombre,
+            fecha: new Date().toLocaleDateString(),
+            listaMateriales: itemsKit, 
+            totalDesgaste: 0, totalMano: 0, diseno: 0, ganancia: 0, minutos: 0,
+            total: final,
+            esCombo: true,
+            precioReal: total,
+            descTexto: label,
+            status: 'pendiente',
+            esPresupuesto: false // CLAVE PARA NO SUMAR EN PENDIENTE
+        };
+
+        let historial = JSON.parse(localStorage.getItem("donatte_historial_v71") || "[]"); 
+        historial.unshift(nuevoItem);
+        localStorage.setItem("donatte_historial_v71", JSON.stringify(historial));
+        cargarTabla();
+        alert("¡Combo guardado!");
+    }
+
     function cargarTabla() {
-        let tbody = document.getElementById("bodyHistorial");
-        tbody.innerHTML = "";
-        let guardado = localStorage.getItem("appDonatte_v3");
-        if(!guardado) return;
-        let historial = JSON.parse(guardado);
-        historial.forEach((item) => {
+        let tbody = document.getElementById("bodyHistorial"); tbody.innerHTML = "";
+        let historial = JSON.parse(localStorage.getItem("donatte_historial_v71") || "[]");
+        
+        historial.forEach((item, index) => {
             let tr = document.createElement("tr");
-            tr.innerHTML = `<td>${item.fecha}</td><td>${item.nombre}</td><td style="font-weight:700; color:#ff5983;">$${item.total.toFixed(2)}</td>`;
+            if(item.status === 'vendido') tr.className = "row-sold";
+            
+            let statusLabel = "";
+            if (item.status === 'vendido') {
+                statusLabel = '<span class="status-badge status-sold">Vendido</span>';
+            } else if (item.esPresupuesto) {
+                statusLabel = '<span class="status-badge status-pending">Pendiente</span>';
+            } else {
+                statusLabel = '<span class="status-badge status-info">📂 Modelo</span>'; // ETIQUETA NUEVA
+            }
+            
+            let toggleBtn = item.status === 'vendido'
+                ? `<button class="btn-small" style="background:#e8f5e9; color:#2e7d32;" onclick="toggleVenta(${index})" title="Marcar como Pendiente">✅</button>`
+                : `<button class="btn-small" style="background:#fff3e0; color:#ef6c00;" onclick="toggleVenta(${index})" title="Confirmar Venta">💰</button>`;
+
+            tr.innerHTML = `
+                <td>${statusLabel}</td>
+                <td>${item.fecha}</td>
+                <td>${item.nombre}</td>
+                <td style="color:var(--verde-venta); font-weight:bold;">${formatMoney(item.total)}</td>
+                <td class="hist-actions">
+                    ${toggleBtn}
+                    <button class="btn-small" style="background:#ede7f6; color:var(--menta-brand);" onclick="verDetalle(${index})">👁️</button>
+                    <button class="btn-small" style="background:#e0f7fa; color:#006064;" onclick="preguntarDescarga(${index})" title="Descargar Imagen">🖼️</button>
+                    <button class="btn-small" style="background:#ffcdd2; color:var(--rojo-borrar);" onclick="borrarIndividual(${index})">🗑️</button>
+                </td>`;
             tbody.appendChild(tr);
         });
     }
 
-    function borrarTodo() {
-        if(confirm("¿Borrar historial?")) { localStorage.removeItem("appDonatte_v3"); cargarTabla(); }
+    function toggleVenta(index) {
+        let historial = JSON.parse(localStorage.getItem("donatte_historial_v71"));
+        let item = historial[index];
+        
+        // LOGICA DE DESCUENTO DE STOCK
+        if(item.status !== 'vendido') {
+            // Se esta marcando como vendido -> RESTAR STOCK
+            if(item.listaMateriales && item.listaMateriales.length > 0) {
+                item.listaMateriales.forEach(prod => {
+                    // Extraer nombre base y cantidad. Ej: "Papel (x10)"
+                    let nombreBase = prod.nombre;
+                    let cantidad = 1;
+                    
+                    // Regex para sacar (x10)
+                    let match = prod.nombre.match(/(.*?) \(x(\d+)\)/);
+                    if(match) {
+                        nombreBase = match[1];
+                        cantidad = parseInt(match[2]);
+                    }
+                    
+                    // Buscar en dbMateriales y restar
+                    let matIndex = dbMateriales.findIndex(m => m.nombre === nombreBase);
+                    if(matIndex !== -1) {
+                        dbMateriales[matIndex].stock -= cantidad;
+                    }
+                });
+                localStorage.setItem("donatte_materiales_db", JSON.stringify(dbMateriales));
+                actualizarDropdown(); // Refrescar visual
+            }
+            item.status = 'vendido';
+        } else {
+            // Se esta desmarcando -> DEVOLVER STOCK (Opcional, pero recomendado)
+            if(item.listaMateriales && item.listaMateriales.length > 0) {
+                item.listaMateriales.forEach(prod => {
+                    let nombreBase = prod.nombre;
+                    let cantidad = 1;
+                    let match = prod.nombre.match(/(.*?) \(x(\d+)\)/);
+                    if(match) { nombreBase = match[1]; cantidad = parseInt(match[2]); }
+                    
+                    let matIndex = dbMateriales.findIndex(m => m.nombre === nombreBase);
+                    if(matIndex !== -1) {
+                        dbMateriales[matIndex].stock += cantidad;
+                    }
+                });
+                localStorage.setItem("donatte_materiales_db", JSON.stringify(dbMateriales));
+                actualizarDropdown();
+            }
+            item.status = 'pendiente';
+        }
+        
+        localStorage.setItem("donatte_historial_v71", JSON.stringify(historial));
+        cargarTabla();
     }
-    function reiniciarFabrica() {
-        if(confirm("¿Resetear?")) { localStorage.clear(); location.reload(); }
+
+    function preguntarDescarga(index) {
+        let opcion = prompt("¿Qué deseas descargar?\n1. Ticket Cliente (Limpio)\n2. Ficha Interna (Detallada)");
+        if (opcion === "1") {
+            descargarDesdeHistorial(index, "cliente");
+        } else if (opcion === "2") {
+            descargarDesdeHistorial(index, "interno");
+        }
     }
-    cargarTabla();
+
+    function descargarDesdeHistorial(index, tipo) {
+        let historial = JSON.parse(localStorage.getItem("donatte_historial_v71") || "[]");
+        let item = historial[index];
+        
+        if (tipo === "cliente") {
+            document.getElementById("tc_nombre").innerText = item.nombre;
+            document.getElementById("tc_total").innerText = formatMoney(item.total);
+            document.getElementById("tc_fecha").innerText = "Fecha: " + item.fecha; // FECHA AL DESCARGAR
+            
+            let container = document.getElementById("tc_items_container");
+            container.innerHTML = "";
+            if(item.listaMateriales && item.listaMateriales.length > 0) {
+                let ul = document.createElement("ul");
+                ul.style.listStyle = "none"; ul.style.padding = "0";
+                item.listaMateriales.forEach(prod => {
+                    let li = document.createElement("li");
+                    li.style.borderBottom = "1px dashed #eee"; li.style.padding = "5px 0";
+                    li.innerHTML = `✨ ${prod.nombre}`;
+                    ul.appendChild(li);
+                });
+                container.appendChild(ul);
+            }
+            generarImagen("ticketCliente", "Cliente-" + item.nombre + ".png");
+        
+        } else {
+            document.getElementById("ti_nombre").innerText = item.nombre;
+            document.getElementById("ti_fecha").innerText = item.fecha;
+            let ul = document.getElementById("ti_listaMats"); ul.innerHTML = "";
+            if(item.listaMateriales) {
+                item.listaMateriales.forEach(m => { ul.innerHTML += `<li>${m.nombre}: ${formatMoney(m.precio)}</li>`; });
+            }
+            document.getElementById("ti_desgaste").innerText = formatMoney(item.totalDesgaste || 0);
+            document.getElementById("ti_mano").innerText = formatMoney(item.totalMano || 0);
+            document.getElementById("ti_diseno").innerText = formatMoney(item.diseno || 0);
+            document.getElementById("ti_costo").innerText = formatMoney(item.costoPuro || 0);
+            document.getElementById("ti_ganancia").innerText = formatMoney(item.ganancia || 0);
+            document.getElementById("ti_total").innerText = formatMoney(item.total);
+            generarImagen("ticketInterno", "Interno-" + item.nombre + ".png");
+        }
+    }
+
+    function verDetalle(index) {
+        let item = JSON.parse(localStorage.getItem("donatte_historial_v71"))[index];
+        document.getElementById("mTitulo").innerText = item.nombre;
+        document.getElementById("mFecha").innerText = item.fecha;
+        let ul = document.getElementById("mMateriales"); ul.innerHTML = "";
+        
+        if(item.listaMateriales && item.listaMateriales.length > 0) { 
+            item.listaMateriales.forEach(m => ul.innerHTML += `<li>${m.nombre}: ${formatMoney(m.precio)}</li>`); 
+        } else { ul.innerHTML = "<li>Sin detalles</li>"; }
+        
+        if (item.esCombo) {
+            document.getElementById("detallesNormales").style.display = "none";
+            document.getElementById("detallesCombo").style.display = "block";
+            document.getElementById("cTotalLista").innerText = formatMoney(item.precioReal || 0);
+            document.getElementById("cDescuento").innerText = item.descTexto || "Oferta Aplicada";
+        } else {
+            document.getElementById("detallesNormales").style.display = "block";
+            document.getElementById("detallesCombo").style.display = "none";
+            
+            let mins = item.minutos || 0;
+            let mano = item.totalMano || 0;
+            document.getElementById("mManoDetalle").innerText = `⏱️ ${mins} min ($${formatMoney(mano)})`;
+            document.getElementById("mDesgaste").innerText = formatMoney(item.totalDesgaste || 0);
+            document.getElementById("mDiseno").innerText = formatMoney(item.diseno || 0);
+            
+            let porc = item.gananciaPorc || 0;
+            document.getElementById("mGanancia").innerText = `${formatMoney(item.ganancia || 0)} (${porc}%)`;
+        }
+
+        document.getElementById("mTotal").innerText = formatMoney(item.total);
+        document.getElementById("modalDetalle").style.display = "flex";
+    }
+
+    function cerrarModal() { document.getElementById("modalDetalle").style.display = "none"; }
+    function borrarIndividual(index) { if(confirm("¿Borrar pedido?")) { let h = JSON.parse(localStorage.getItem("donatte_historial_v71")); h.splice(index, 1); localStorage.setItem("donatte_historial_v71", JSON.stringify(h)); cargarTabla(); }}
+    function borrarTodoHistorial() { if(confirm("¿Borrar TODO?")) { localStorage.removeItem("donatte_historial_v71"); cargarTabla(); }}
+
+    function calcUnitario() {
+        let p = parseFloat(document.getElementById("auxPrecio").value) || 0;
+        let c = parseFloat(document.getElementById("auxCant").value) || 1;
+        document.getElementById("resUnitario").innerText = formatMoney(p/c) + " c/u";
+        document.getElementById("resUnitario").style.display = "block";
+    }
+    
+    function calcTotalUsado() {
+        let p = parseFloat(document.getElementById("auxPrecio").value) || 0;
+        let c = parseFloat(document.getElementById("auxCant").value) || 1;
+        let u = parseFloat(document.getElementById("auxUsadas").value) || 0;
+        let total = (p / c) * u;
+        document.getElementById("resTotalUsado").innerText = "Costo: " + formatMoney(total);
+    }
+    
+    function calcA4() {
+        let w = parseFloat(document.getElementById("a4Ancho").value) || 0;
+        let h = parseFloat(document.getElementById("a4Alto").value) || 0;
+        if(w===0 || h===0) return;
+        const A4_W = 21, A4_H = 29.7;
+        let v = Math.floor(A4_W / w) * Math.floor(A4_H / h);
+        let hor = Math.floor(A4_H / w) * Math.floor(A4_W / h);
+        let resBox = document.getElementById("resA4Box");
+        resBox.style.display = "block";
+        resBox.innerHTML = `Vertical: ${v} u.<br>Horizontal: ${hor} u.`;
+    }
+
+    // --- LOGICA DE KITS Y FLYER ---
+    function agregarItemKit() {
+        let prod = document.getElementById("kitProd").value;
+        let precio = parseFloat(document.getElementById("kitPrecio").value);
+        let cant = parseFloat(document.getElementById("kitCant").value) || 1; 
+        
+        if(prod && precio) {
+            let nombreDisplay = cant > 1 ? `${prod} (x${cant})` : prod;
+            let precioTotal = precio * cant;
+            itemsKit.push({nombre: nombreDisplay, precio: precioTotal});
+            renderizarListaKit();
+            actualizarFlyerLive(); 
+            
+            document.getElementById("kitProd").value = ""; 
+            document.getElementById("kitPrecio").value = ""; 
+            document.getElementById("kitCant").value = "1";
+            document.getElementById("kitProd").focus();
+        }
+    }
+    function renderizarListaKit() {
+        let div = document.getElementById("listaKitVisual"); div.innerHTML = "";
+        if(itemsKit.length === 0) { 
+            div.innerHTML = "<div style='text-align:center;color:#ccc;'>Carrito vacío</div>"; 
+            document.getElementById("previewContainer").style.display = "none";
+            return;
+        }
+        document.getElementById("previewContainer").style.display = "block"; 
+        itemsKit.forEach((item, i) => {
+            div.innerHTML += `<div class="mat-agregado-row"><span>${item.nombre}</span><div style="display:flex;gap:5px;"><strong>${formatMoney(item.precio)}</strong><button class="btn-remove" onclick="borrarItemKit(${i})" style="width:20px;height:20px;font-size:10px;">x</button></div></div>`;
+        });
+    }
+    function borrarItemKit(i) { itemsKit.splice(i, 1); renderizarListaKit(); actualizarFlyerLive(); }
+    
+    function setPromo(val, label) { 
+        document.getElementById("comboDescInput").value = val;
+        document.getElementById("comboDescLabel").value = label || ""; 
+        actualizarFlyerLive();
+    }
+
+    function calcCombo() {
+        actualizarFlyerLive();
+        document.getElementById("previewContainer").scrollIntoView({behavior: "smooth"});
+    }
+
+    function actualizarFlyerLive() {
+        let ul = document.getElementById("fly_lista"); ul.innerHTML = "";
+        itemsKit.forEach(i => { ul.innerHTML += `<li class="fly-item"><span>${i.nombre}</span></li>`; });
+        
+        let total = itemsKit.reduce((sum, item) => sum + item.precio, 0);
+        let desc = parseFloat(document.getElementById("comboDescInput").value) || 0;
+        let final = Math.round(total - (total * (desc/100))); 
+        document.getElementById("fly_total").innerText = formatMoney(final);
+        
+        let titulo = document.getElementById("flyerTituloInput").value || "SUPER PROMO";
+        document.getElementById("fly_title_text").innerHTML = titulo.replace(/\n/g, "<br>");
+        
+        let bgClass = document.getElementById("flyerBgSelect").value;
+        let flyer = document.getElementById("flyerPastel");
+        if (flyer.style.backgroundImage) {
+             // Keep uploaded image
+        } else {
+            flyer.className = ""; 
+            flyer.classList.add(bgClass); 
+        }
+
+        let fecha = document.getElementById("flyerFecha").value;
+        let fechaTexto = fecha ? `VÁLIDO HASTA: ${fecha.split("-").reverse().join("/")}` : "OFERTA LIMITADA";
+        document.getElementById("fly_vencimiento").innerText = fechaTexto;
+
+        // FECHA DE CREACIÓN DEL FLYER
+        document.getElementById("fly_fecha_creacion").innerText = "Creado el: " + new Date().toLocaleDateString();
+    }
+
+    function descargarFlyerReal() {
+        const ticket = document.getElementById("flyerPastel");
+        html2canvas(ticket, {scale: 3}).then(canvas => { 
+            let link = document.createElement('a'); link.download = 'Super-Combo-Pastel.png'; link.href = canvas.toDataURL("image/png"); link.click();
+        });
+    }
 </script>
 
 </body>
 </html>
-
